@@ -8,7 +8,10 @@ install:
 
 services:
   - postgresql
-  
+
+before_script:
+  - psql -c "CREATE DATABASE mepTest;" -U postgres
+
 deploy:
  provider: heroku
  api-key: 
