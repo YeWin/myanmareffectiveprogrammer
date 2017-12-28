@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+	<title>Header</title>
+</head>
+<body>
+	<div th:fragment="user-header">
+	
+	<div class="navbar navbar-material-blog navbar-success navbar-absolute-top navbar-overlay">
+
+      <div class="navbar-image" style="background-image: url('/theme/img/fashion/unsplash-3.jpg');background-position: center 40%;"></div>
+
+      <div class="navbar-wrapper container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" th:href="@{/}"><i class="material-icons">&#xE871;</i> MEP</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">          
+          	<li class="active"><a th:href="@{/articles}">Article</a></li>
+            <li><a th:href="@{/professional-programmer}">Professional Programmer</a></li>
+            <li class="dropdown">
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Programming Best Practices <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a th:href="@{/test-driven-development}">Test Driven Development (TDD)</a></li>                
+                <li><a th:href="@{/effective-java}">Effective Java</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Java <b class="caret"></b></a>
+              <ul class="dropdown-menu">                
+                <li><a th:href="@{/java7}">Java 7</a></li>                
+              </ul>
+            </li>   
+            <li class="dropdown hidden-sm">
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a th:href="@{/about-us}">About Us</a></li>
+                <li><a th:href="@{/contact-us}">Contact Us</a></li>
+                <li><a th:href="@{/write-for-us}">Write For Us</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>	
+	
+	</div>
+</body>
+</html>

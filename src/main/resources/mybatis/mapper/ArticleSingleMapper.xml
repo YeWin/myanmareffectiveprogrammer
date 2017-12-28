@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mep.domain.user.article.mapper.ArticleSingleMapper">
+	<select id="getArticle" resultType="com.mep.domain.user.article.entity.ArticleSingle">
+
+		SELECT
+			admin.admin_name,
+			admin.admin_image_url,			
+			admin.about_admin,						
+			COALESCE(post.post_title_mmr, post.post_title_eng) AS post_title,
+			post.post_title_img_url,
+			post.created_date,
+			post.content_type,			
+			post.post_content
+		FROM
+			post
+		JOIN
+			administrator AS admin
+		ON
+			(post.admin_id = admin.admin_id)
+		WHERE
+			lower(post.post_title_eng) = lower(#{postTitleEng})
+	</select>
+	
+	<select id="getLastSevenArticle" resultType="com.mep.domain.user.article.entity.ArticleDashboard">
+
+		SELECT
+			post.post_id,
+			COALESCE(post.post_title_mmr, post.post_title_eng) AS post_title,
+			post.post_title_img_url,
+			post.post_title_eng,
+			post.created_date,
+			admin.admin_name
+		FROM
+			post
+		JOIN
+			administrator AS admin
+		ON
+			(post.admin_id = admin.admin_id)
+		WHERE
+			post.content_type = 0 
+		AND
+			lower(post.post_title_eng) != lower(#{postTitleEng})
+		ORDER BY
+			post.post_id desc
+		LIMIT 7
+	</select>
+</mapper>

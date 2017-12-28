@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+	<title>Footer</title>
+</head>
+<body>
+	<div th:fragment="user-footer">
+		
+		<footer class="blog-footer">
+
+			<div id="links">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-5">
+							<i class="material-icons brand">&#xE871;</i>
+							<ul class="list-inline">
+								<li>Copyright text 2017 by Myanmar Effective Programmer.</li>
+							</ul>
+						</div>
+
+						<div class="col-sm-5 text-center offset">
+							<ul class="list-inline">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="page-about.html">About Us</a></li>								
+								<li><a href="page-contact.html">Contact Us</a></li>
+							</ul>
+						</div>
+
+						<div class="col-md-2 text-right offset">
+							<ul class="list-inline">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</footer>
+
+		<button class="material-scrolltop warning" type="button"></button>
+
+		<script th:src="@{/theme/js/jquery-1.11.3.min.js}"></script>
+		<script th:src="@{/theme/js/bootstrap.min.js}"></script>
+		<script th:src="@{/theme/js/ripples.min.js}"></script>
+		<script th:src="@{/theme/js/material.min.js}"></script>
+		<script th:src="@{/theme/js/material-scrolltop.js}"></script>
+		<script th:src="@{/theme/js/main.js}"></script>
+
+		<script>
+			$.material.init();
+			$('body').materialScrollTop();
+		</script>
+	</div>
+</body>
+</html>

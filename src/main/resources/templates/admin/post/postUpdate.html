@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Post - Myanmar Effective Programmer</title>
+
+<div th:replace="fragments/adminHeader :: admin-header-css" />
+
+<script th:src="@{/theme/ckeditor/ckeditor.js}"></script>
+
+</head>
+<body>
+
+	<div th:replace="fragments/adminHeader :: admin-header"></div>
+
+	<div class="container">
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Edit Post</h3>
+			</div>
+
+			<div class="panel-body">
+				<form th:object="${postDto}"
+					th:action="@{/admin/post/updateConfirm}" action="#"
+					method="post">
+
+					<div th:replace="fragments/validatorMessage :: message"></div>
+					<div th:replace="fragments/customMessage :: message"></div>
+					
+					<input type="hidden" th:field="*{postId}" />
+					<input type="hidden" th:field="*{adminId}" />
+
+					<div class="form-group">
+						<select class="form-control" th:field="*{categoryId}">
+							<option th:each="category : ${postDto.categoryDropdown}"
+								th:value="${category.categoryId}"
+								th:text="${category.categoryName}"></option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<input type="text" th:field="*{postTitleEng}" class="form-control"
+							placeholder="Title Name English" />
+					</div>
+					
+					<div class="form-group">
+						<input type="text" th:field="*{postTitleMmr}" class="form-control"
+							placeholder="Title Name Myanmar" />
+					</div>
+					
+					<div class="form-group">
+						<input type="text" th:field="*{postTitleImgUrl}" class="form-control"
+							placeholder="Title Image" />
+					</div>
+					
+					<div class="form-group">
+						<select class="form-control" th:field="*{contentType}">
+							<option th:each="content : ${postDto.articleDropdownDto}"
+								th:value="${content.contentType}"
+								th:text="${content.contentTypeName}"></option>
+						</select>
+					</div>
+					
+					<div class="form-group">
+
+						<textarea th:field="*{postContent}" id="editor" cols="30"></textarea>
+						<script>
+							CKEDITOR.replace('editor', {
+								removePlugins : 'sourcearea'								
+							});
+						</script>
+					</div>
+
+					<input type="submit" class="btn btn-danger pull-right" value="Update" />
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

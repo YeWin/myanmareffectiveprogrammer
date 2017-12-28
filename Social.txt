@@ -1,0 +1,11 @@
+https://stackoverflow.com/questions/16463030/how-to-add-facebook-share-button-on-my-website
+http://storyports.com/how-to-add-social-sharing-content-marketing
+https://www.petrikainulainen.net/spring-social-tutorial/
+https://stackoverflow.com/questions/14829040/facebook-sharer-popup-window/14829742#14829742
+https://stackoverflow.com/questions/26526037/javascript-function-call-with-thymeleaf
+https://stackoverflow.com/questions/14365746/variable-expression-into-javascript-without-using-thinline
+https://github.com/thymeleaf/thymeleaf/issues/279
+
+https://stackoverflow.com/questions/14365746/variable-expression-into-javascript-without-using-thinline
+
+<!-- <a th:onClick="'javascript:fbShare(\'' + ${#httpServletRequest.requestURI} + '\', \'' + ${article.postTitle} + '\', \'' + ${article.postTitle} + '\', \'' + ${article.postTitleImgUrl} + '\', 520, 350);'">Share</a> -->

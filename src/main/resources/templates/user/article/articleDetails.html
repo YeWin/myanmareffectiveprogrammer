@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="fragments/userHomeLayout" lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <title>Articles - Myanmar Effective Programmer</title>	
+	<script th:src="@{/theme/js/custom/social.js}"></script>
+  </head>
+
+  <body>  	
+
+	<div layout:fragment="content" >
+
+    <div class="container blog-content">
+
+      <div class="row">
+      
+      	<div th:each="article : ${articleSingleDto}" >
+	        <div class="col-sm-8 blog-main">
+	
+	          <section class="blog-post">
+	            <div class="panel panel-default">	            
+	              <img th:src="${(!#strings.isEmpty(article.postTitleImgUrl)) ? article.postTitleImgUrl : 
+	              			'https://github.com/YeWin/MEP_Images/blob/master/tutorial_1.jpeg?raw=true'}" class="img-responsive" />
+	              <div class="panel-body">
+	                <div class="blog-post-meta">
+	                  <span class="label label-light label-warning">Apps</span>                                   
+	                  <p class="blog-post-date pull-right"><span
+								th:utext="${#dates.format(article.createdDate, 'MMMMM dd, yyyy')}"></span>
+							/ BY <span th:utext="${article.adminName}"></span></p>
+	                </div>
+	          		
+	          		<div class="blog-post-content">
+	          			<div th:replace="user/common/shareOnSocial :: share-on-social"></div>
+	          			<br/>
+	          		</div>
+	                <div class="blog-post-content">
+	                  <h2 class="blog-post-title"><span th:utext="${article.postTitle} "></span></h2>
+	                  
+	                  <span th:remove="tag" th:utext="${article.postContent} "></span>
+	
+	                </div>
+	              </div>
+	            </div>
+	          </section><!-- /.blog-post -->
+	          
+	          <div th:replace="user/common/disqus :: disqus"></div>
+	
+	        </div><!-- /.blog-main -->
+	
+        <div th:replace="fragments/userRightMenu :: user-right-menu"></div>        
+        
+        <div th:replace="user/common/latestArticles :: articles"></div>
+        
+        </div> <!-- / .loop -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+    
+    </div>
+
+  </body>
+</html>

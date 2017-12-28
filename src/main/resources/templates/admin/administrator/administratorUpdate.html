@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Administrator - Myanmar Effective Programmer</title>
+
+<div th:replace="fragments/adminHeader :: admin-header-css" />
+
+<script th:src="@{/theme/ckeditor/ckeditor.js}"></script>
+
+</head>
+<body>
+
+	<div th:replace="fragments/adminHeader :: admin-header"></div>
+
+	<div class="container">
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Update Administrator</h3>
+			</div>
+
+			<div class="panel-body">
+				<form th:object="${adminDto}"
+					th:action="@{/admin/administrator/updateConfirm}" action="#"
+					method="post">
+
+					<div th:replace="fragments/validatorMessage :: message"></div>
+					<div th:replace="fragments/customMessage :: message"></div>
+					
+					<input type="hidden" th:field="*{adminId}" />
+
+					<div class="form-group">
+						<input type="text" th:field="*{adminName}" class="form-control"
+							placeholder="* Administrator Name" />
+					</div>
+
+					<div class="form-group">
+						<input type="text" th:field="*{adminEmail}" class="form-control"
+							placeholder="* Email" readonly="readonly" />
+					</div>
+					
+					<div class="form-group">
+						<input type="text" th:field="*{adminNewEmail}" class="form-control"
+							placeholder="* New Email" />
+					</div>
+					
+					<div class="form-group">
+						<input type="text" th:field="*{adminImageUrl}" class="form-control"
+							placeholder="Image URL" />
+					</div>
+					
+					<div class="form-group">
+
+						<textarea th:field="*{aboutAdmin}" id="editor" cols="30" placeholder="About Author"></textarea>
+						<script>
+							CKEDITOR.replace('editor', {
+								removePlugins : 'sourcearea'								
+							});
+						</script>
+					</div>
+
+					<input type="submit" class="btn btn-danger pull-right" value="Update" />
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

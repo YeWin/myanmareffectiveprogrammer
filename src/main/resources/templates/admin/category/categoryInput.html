@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Category - Myanmar Effective Programmer</title>
+
+<div th:replace="fragments/adminHeader :: admin-header-css" />
+
+</head>
+<body>
+
+	<div th:replace="fragments/adminHeader :: admin-header"></div>
+
+	<div class="container">
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Add Category</h3>
+			</div>
+
+			<div class="panel-body">
+				<form th:object="${categoryDto}"
+					th:action="@{/admin/category/insertConfirm}" action="#"
+					method="post">
+
+					<div th:replace="fragments/validatorMessage :: message"></div>
+
+					<div class="form-group">
+						<input type="text" th:field="*{categoryName}" class="form-control"
+							placeholder="Category Name" />
+					</div>
+
+					<input type="submit" class="btn btn-danger pull-right" value="Save" />
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
