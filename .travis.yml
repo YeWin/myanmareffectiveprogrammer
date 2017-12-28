@@ -13,7 +13,7 @@ before_script:
   - psql -c "CREATE USER admin WITH PASSWORD 'admin';" -U postgres
   - psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;" -U postgres
 script:
-  - mvn clean test -DJDBC_DATABASE_URL=jdbc:postgresql/localhost:5432/mepTest?schema=public -DJDBC_DATABASE_USERNAME=admin -DJDBC_DATABASE_PASSWORD=admin
+  - mvn clean test -DJDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/mepTest?schema=public -DJDBC_DATABASE_USERNAME=admin -DJDBC_DATABASE_PASSWORD=admin
 
 deploy:
  provider: heroku
