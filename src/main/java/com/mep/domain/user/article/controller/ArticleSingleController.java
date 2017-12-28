@@ -3,6 +3,7 @@ package com.mep.domain.user.article.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,10 +28,14 @@ public class ArticleSingleController {
 	@Autowired
 	private ArchiveListService archiveListService;
 
+	@Value("${blog.url}")
+	private String blogUrl;	
+
 	@GetMapping(value = { "/{createdDate}/{postTitleEng}" })
 	public @ResponseBody ModelAndView getSinglePost(
-			@ModelAttribute("postTitleEng") String postTitleEng) {
-
+			@ModelAttribute("createdDate") String createdDate,
+			@ModelAttribute("postTitleEng") String postTitleEng) {		
+		
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 
 		List<ArticleSingleDto> articleSingleDto = singleService
@@ -39,16 +44,26 @@ public class ArticleSingleController {
 
 		List<ArticleDashboardDto> lastSevenList = singleService
 				.getLastSevenArticle(StringUtil
-						.replaceHyphenWithWhiteSpace(postTitleEng));		
+						.replaceHyphenWithWhiteSpace(postTitleEng));
 
 		mav.addObject("articleDashboardList", lastSevenList);
 
 		mav.addObject("articleSingleDto", articleSingleDto);
-		
-		List<ArchiveYearListDto> archiveList = archiveListService.getArchiveList();
-		
-		mav.addObject("archiveList", archiveList);
+
+		List<ArchiveYearListDto> archiveList = archiveListService
+				.getArchiveList();
+
+		mav.addObject("archiveList", archiveList);	
 
 		return mav;
+	}
+
+	@ModelAttribute("blogUrl")
+	public String getBlogUrl() {
+		return blogUrl;
+	}
+
+	public void setBlogUrl(String blogUrl) {
+		this.blogUrl = blogUrl;
 	}
 }
