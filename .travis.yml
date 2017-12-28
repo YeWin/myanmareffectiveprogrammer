@@ -6,12 +6,14 @@ install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
-postgres:
-  adapter: postgresql
-  database: mepTest
-  username: postgres
+services:
+  - postgresql
 before_script:
-  - "psql -c 'create database mepTest;' -U postgres"
+  - psql -c 'CREATE DATABASE mepTest;' -U postgres
+  - psql -c "CREATE USER admin WITH PASSWORD 'admin';" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;" -U postgres
+script:
+  - mvn clean test -DJDBC_DATABASE_URL=jdbc:postgresql/localhost:5432/mepTest?schema=public -DJDBC_DATABASE_USERNAME=admin -DJDBC_DATABASE_PASSWORD=admin
 
 deploy:
  provider: heroku
