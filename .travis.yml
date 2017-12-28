@@ -10,7 +10,7 @@ services:
   - postgresql
 
 before_script:
-  - psql -c "CREATE DATABASE mepTest;" -U postgres
+  - psql -c 'create database mepTest;' -U postgres
 
 deploy:
  provider: heroku
