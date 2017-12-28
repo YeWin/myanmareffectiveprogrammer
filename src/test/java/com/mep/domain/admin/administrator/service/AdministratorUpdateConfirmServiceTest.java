@@ -50,7 +50,7 @@ public class AdministratorUpdateConfirmServiceTest extends TestAbstract {
 	public void newEmailIsDuplicate() {
 		AdministratorDto adminDto = newAdministratorDto();
 		adminDto.setAdminEmail("admin1@gmail.com");
-		adminDto.setAdminNewEmail("yewin29081990@gmail.com");
+		adminDto.setAdminNewEmail("yewin@gmail.com");
 		ResultMessages result = this.administratorUpdateConfirmService
 				.validateEmailDuplicate(adminDto);
 		assertThat(result.getErrorList().isEmpty(), is(false));
