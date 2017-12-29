@@ -9,7 +9,7 @@
 	<div th:fragment="share-on-social">
 		<ul class="nav navbar-nav navbar-right">
 			<li><a type="icon_link" href="javascript: void(0)"
-				th:onClick="'javascript:fbShare(\'' + ${blogUrl} + '\', \'' + ${#httpServletRequest.requestURI} + '\', \'' + 'Fb Share' + '\', \'' + 'Facebook share popup' + '\', \'' + ${article.postTitleImgUrl} + '\', 900, 900);'">
+				th:onClick="'javascript:fbShare(\'' + ${blogUrl} + '\', \'' + ${#httpServletRequest.requestURI} + '\', \'' + ${pageTitle} + '\', \'' + '\', \'' + ${article.postTitleImgUrl} + '\', 900, 900);'">
 				<i class="fa fa-facebook-square fa-3x"></i>
 			</a></li>
 			<li><a type="icon_link" href="javascript: void(0)"
