@@ -29,13 +29,13 @@ public class ArticleSingleController {
 	private ArchiveListService archiveListService;
 
 	@Value("${blog.url}")
-	private String blogUrl;	
+	private String blogUrl;
 
 	@GetMapping(value = { "/{createdDate}/{postTitleEng}" })
 	public @ResponseBody ModelAndView getSinglePost(
 			@ModelAttribute("createdDate") String createdDate,
-			@ModelAttribute("postTitleEng") String postTitleEng) {		
-		
+			@ModelAttribute("postTitleEng") String postTitleEng) {
+
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 
 		List<ArticleSingleDto> articleSingleDto = singleService
@@ -53,7 +53,9 @@ public class ArticleSingleController {
 		List<ArchiveYearListDto> archiveList = archiveListService
 				.getArchiveList();
 
-		mav.addObject("archiveList", archiveList);	
+		mav.addObject("archiveList", archiveList);
+		mav.addObject("pageTitle",
+				StringUtil.replaceHyphenWithWhiteSpace(postTitleEng));
 
 		return mav;
 	}
