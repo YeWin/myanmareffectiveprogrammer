@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mep.domain.user.article.dto.ArticleDashboardDto;
 import com.mep.domain.user.article.service.ArticleDashboradService;
 import com.mep.util.Constant;
+import com.mep.util.StringUtil;
 
 @Controller
 public class ArticleDashboardController {
@@ -45,6 +46,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[0]));
+		
+		mav.addObject("pageTitle", Constant.MENU[0]);
 
 		return mav;
 	}
@@ -56,6 +59,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[1]));
+		
+		mav.addObject("pageTitle", Constant.MENU[1]);
 
 		return mav;
 	}
@@ -67,6 +72,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[2]));
+		
+		mav.addObject("pageTitle", Constant.MENU[2]);
 
 		return mav;
 	}
@@ -78,6 +85,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[3]));
+		
+		mav.addObject("pageTitle", Constant.MENU[3]);
 
 		return mav;
 	}
@@ -89,6 +98,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[4]));
+		
+		mav.addObject("pageTitle", Constant.MENU[4]);
 
 		return mav;
 	}
@@ -100,6 +111,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[5]));
+		
+		mav.addObject("pageTitle", Constant.MENU[5]);
 
 		return mav;
 	}
@@ -111,6 +124,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[6]));
+		
+		mav.addObject("pageTitle", Constant.MENU[6]);
 
 		return mav;
 	}
@@ -122,6 +137,8 @@ public class ArticleDashboardController {
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
 		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[7]));
+		
+		mav.addObject("pageTitle", Constant.MENU[7]);
 
 		return mav;
 	}

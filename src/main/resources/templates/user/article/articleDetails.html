@@ -5,7 +5,7 @@
   <head>
     
     <meta charset="UTF-8" />
-    <title th:text="${pageTitle} + ' - Myanmar Effective Programmer'"></title>	
+    <title th:text="${#strings.capitalize(pageTitle)} + ' - Myanmar Effective Programmer'"></title>	
 	<script th:src="@{/theme/js/custom/social.js}"></script>
   </head>
 

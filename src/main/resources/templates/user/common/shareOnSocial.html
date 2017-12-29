@@ -5,19 +5,18 @@
 <head>
 </head>
 <body>
-
 	<div th:fragment="share-on-social">
 		<ul class="nav navbar-nav navbar-right">
-			<li><a type="icon_link" href="javascript: void(0)"
-				th:onClick="'javascript:fbShare(\'' + ${blogUrl} + '\', \'' + ${#httpServletRequest.requestURI} + '\', \'' + ${pageTitle} + '\', \'' + '\', \'' + ${article.postTitleImgUrl} + '\', 900, 900);'">
-				<i class="fa fa-facebook-square fa-3x"></i>
+			<li><a target="popup" href="javascript: void(0)"
+				th:onClick="'javascript:fbShare(\'' + ${blogUrl} + ${#httpServletRequest.requestURI} + '\');'">
+					<i class="fa fa-facebook-square fa-3x"></i>
 			</a></li>
-			<li><a type="icon_link" href="javascript: void(0)"
-				th:onClick="'javascript:lkShare(\'' + ${blogUrl} + '\', \'' + ${#httpServletRequest.requestURI} + '\');'">
+			<li><a target="popup" href="javascript: void(0)"
+				th:onClick="'javascript:lkShare(\'' + ${blogUrl} + ${#httpServletRequest.requestURI} + '\');'">
 					<i class="fa fa-linkedin-square fa-3x"></i>
 			</a></li>
-			<li><a type="icon_link" href="javascript: void(0)"
-				th:onClick="'javascript:ttShare(\'' + ${blogUrl} + '\', \'' + ${#httpServletRequest.requestURI} + '\');'">
+			<li><a target="popup" href="javascript: void(0)"
+				th:onClick="'javascript:ttShare(\'' + ${blogUrl} + ${#httpServletRequest.requestURI} + '\', \'' + ${#strings.capitalize(pageTitle)} + '\');'">
 					<i class="fa fa-twitter-square fa-3x"></i>
 			</a></li>
 		</ul>
