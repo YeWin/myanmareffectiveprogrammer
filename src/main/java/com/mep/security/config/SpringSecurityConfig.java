@@ -30,9 +30,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 			.antMatchers("/login",
-						"/login-error",						
+						"/login-error",
 						"admin/**",
-						"/auth").permitAll()	
+						"/auth").permitAll()
 			.anyRequest().authenticated()
 		.and()
         
@@ -44,11 +44,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.formLogin()
 			.loginProcessingUrl("/auth")		
-			.loginPage("/login")				
-			.failureForwardUrl("/login-error")	
+			.loginPage("/login")
+			.failureForwardUrl("/login-error")
 			.defaultSuccessUrl("/login-success", true)
-			.usernameParameter("adminEmail")			
-			.passwordParameter("adminPassword")			
+			.usernameParameter("adminEmail")
+			.passwordParameter("adminPassword")
 			.and();
 
 		http.logout()
