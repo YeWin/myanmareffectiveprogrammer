@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mep.domain.user.article.dto.ArticleDashboardDto;
 import com.mep.domain.user.article.service.ArticleDashboradService;
 import com.mep.util.Constant;
-import com.mep.util.StringUtil;
 
 @Controller
 public class ArticleDashboardController {
