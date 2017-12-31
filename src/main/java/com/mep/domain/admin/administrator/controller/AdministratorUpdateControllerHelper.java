@@ -4,8 +4,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mep.domain.admin.administrator.dto.AdministratorDto;
+import com.mep.domain.admin.administrator.dto.PasswordChangeDto;
 import com.mep.domain.admin.administrator.service.AdministratorInsertService;
+import com.mep.domain.admin.administrator.service.AdministratorPasswordUpdateConfirmService;
 import com.mep.domain.admin.administrator.service.AdministratorUpdateConfirmService;
+import com.mep.handler.ApplicationException;
 import com.mep.message.ResultMessages;
 
 public abstract class AdministratorUpdateControllerHelper {
@@ -27,6 +30,22 @@ public abstract class AdministratorUpdateControllerHelper {
 
 		ResultMessages resultMessages = administratorInsertService
 				.validate(adminDto);
+
+		if (!resultMessages.getErrorList().isEmpty()) {
+			mav.addObject("resultMessages", resultMessages);
+			mav.setViewName(path);
+			return true;
+		}
+
+		return false;
+	}
+	
+	protected boolean checkCustomValidatorForPasswordChange(
+			AdministratorPasswordUpdateConfirmService administratorPasswordUpdateConfirmService,
+			PasswordChangeDto passwordChangeDto, String path, ModelAndView mav) throws ApplicationException {
+
+		ResultMessages resultMessages = administratorPasswordUpdateConfirmService
+				.validatePassword(passwordChangeDto);
 
 		if (!resultMessages.getErrorList().isEmpty()) {
 			mav.addObject("resultMessages", resultMessages);

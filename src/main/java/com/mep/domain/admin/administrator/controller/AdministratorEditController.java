@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mep.domain.admin.administrator.dto.AdministratorDto;
+import com.mep.domain.admin.administrator.dto.PasswordChangeDto;
 import com.mep.domain.admin.administrator.service.AdministratorDeleteService;
 import com.mep.domain.admin.administrator.service.AdministratorInsertService;
+import com.mep.domain.admin.administrator.service.AdministratorPasswordUpdateConfirmService;
 import com.mep.domain.admin.administrator.service.AdministratorUpdateConfirmService;
 import com.mep.domain.admin.administrator.service.AdministratorUpdateService;
 import com.mep.handler.ApplicationException;
@@ -36,7 +38,11 @@ public class AdministratorEditController extends
 
 	private static final String UPDATE_COMPLETE_PATH = "admin/administrator/administratorUpdateComplete";
 
+	private static final String UPDATE_PASSWORD_CHANGE = "admin/administrator/administratorPasswordChange";
+
 	private static final String ADMIN_DTO = "adminDto";
+	
+	private static final String PASSWORD_CHANGE_DTO = "passwordChangeDto";
 
 	@Autowired
 	private AdministratorInsertService administratorInsertService;
@@ -49,6 +55,9 @@ public class AdministratorEditController extends
 
 	@Autowired
 	private AdministratorUpdateConfirmService administratorUpdateConfirmService;
+
+	@Autowired
+	AdministratorPasswordUpdateConfirmService administratorPasswordUpdateConfirmService;
 
 	@Autowired
 	private MessageHelper messageHelper;
@@ -115,6 +124,42 @@ public class AdministratorEditController extends
 				.getAdministratorById(adminId);
 
 		mav.addObject(ADMIN_DTO, adminDto);
+
+		return mav;
+	}
+
+	@GetMapping(value = "/administrator/passwordChange/{adminId}")
+	public ModelAndView administratorPasswordChange(
+			@ModelAttribute("adminId") Integer adminId) {
+
+		ModelAndView mav = new ModelAndView(UPDATE_PASSWORD_CHANGE);
+		
+		PasswordChangeDto passwordChangeDto = new PasswordChangeDto();
+		passwordChangeDto.setAdminId(adminId);
+
+		mav.addObject(PASSWORD_CHANGE_DTO, passwordChangeDto);
+
+		return mav;
+	}
+
+	@PostMapping(value = "/administrator/passwordChangeConfirm")
+	public ModelAndView administratorPasswordChangeConfirm(
+			@Validated @ModelAttribute("passwordChangeDto ") PasswordChangeDto passwordChangeDto,
+			BindingResult bindingResult) throws ApplicationException {
+
+		ModelAndView mav = new ModelAndView(UPDATE_COMPLETE_PATH);
+		mav.addObject(PASSWORD_CHANGE_DTO, passwordChangeDto);
+		
+
+		if (checkCustomValidatorForPasswordChange(
+				administratorPasswordUpdateConfirmService, passwordChangeDto,
+				UPDATE_PASSWORD_CHANGE, mav)) {
+			return mav;
+		}
+
+		administratorPasswordUpdateConfirmService.updateAdministratorPassword(passwordChangeDto);
+
+		messageHelper.setCompleteMessage(mav, "MSP00001");
 
 		return mav;
 	}
