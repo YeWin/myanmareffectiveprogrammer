@@ -8,12 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mep.database.entity.Post;
 import com.mep.domain.admin.post.dao.PostUpdateDao;
 import com.mep.domain.admin.post.dto.PostDto;
+import com.mep.util.BeanConverter;
 
 @Service
 public class PostUpdateServiceImpl implements PostUpdateService {
 
 	@Autowired
 	private PostUpdateDao postUpdateDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -21,20 +25,12 @@ public class PostUpdateServiceImpl implements PostUpdateService {
 
 		Post post = postUpdateDao.getPostById(postId);
 
-		return setEntityModelToDtoModel(post);
+		return beanConvert(post);
 	}
 
-	private PostDto setEntityModelToDtoModel(Post post) {
-		PostDto postDto = new PostDto();
-
-		postDto.setPostId(post.getPostId());
-		postDto.setCategoryId(post.getCategoryId());
-		postDto.setAdminId(post.getAdminId());
-		postDto.setPostTitleEng(post.getPostTitleEng());
-		postDto.setPostTitleMmr(post.getPostTitleMmr());
-		postDto.setPostTitleImgUrl(post.getPostTitleImgUrl());
-		postDto.setPostContent(post.getPostContent());
-		postDto.setContentType(post.getContentType());
+	private PostDto beanConvert(Post post) {
+		PostDto postDto = beanConverter.convert(post,
+				PostDto.class);
 
 		return postDto;
 	}

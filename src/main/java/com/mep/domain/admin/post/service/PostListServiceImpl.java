@@ -11,12 +11,16 @@ import com.mep.database.entity.Post;
 import com.mep.domain.admin.post.dao.PostListDao;
 import com.mep.domain.admin.post.dto.PostDto;
 import com.mep.domain.admin.post.dto.PostListDto;
+import com.mep.util.BeanConverter;
 
 @Service
 public class PostListServiceImpl implements PostListService {
 
 	@Autowired
 	private PostListDao postListDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -24,18 +28,18 @@ public class PostListServiceImpl implements PostListService {
 	public List<PostListDto> getPostList(PostDto postDto) {
 
 		List<Post> postList = postListDao
-				.getPostList(setDtoModelToEntityModel(postDto));
+				.getPostList(beanConvert(postDto));
 
 		List<PostListDto> postListDto = (List<PostListDto>) (List<?>) postList;
 
 		return postListDto;
 	}
 
-	private Post setDtoModelToEntityModel(PostDto postDto) {
+	private Post beanConvert(PostDto postDto) {
 
-		Post post = new Post();
-
-		post.setCategoryId(postDto.getCategoryId());
+		Post post = beanConverter.convert(postDto,
+				Post.class);
+		
 		post.setPostTitleEng(postDto.getPostTitleEng());
 		post.setContentType(postDto.getContentType());
 

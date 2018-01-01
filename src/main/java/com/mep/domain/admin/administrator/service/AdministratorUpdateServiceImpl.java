@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mep.database.entity.Administrator;
 import com.mep.domain.admin.administrator.dao.AdministratorUpdateDao;
 import com.mep.domain.admin.administrator.dto.AdministratorDto;
+import com.mep.util.BeanConverter;
 
 @Service
 public class AdministratorUpdateServiceImpl implements
@@ -15,6 +16,9 @@ public class AdministratorUpdateServiceImpl implements
 
 	@Autowired
 	AdministratorUpdateDao administratorUpdateDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -23,17 +27,12 @@ public class AdministratorUpdateServiceImpl implements
 		Administrator admin = administratorUpdateDao
 				.getAdministratorById(adminId);
 
-		return setEntityModelToDtoModel(admin);
+		return beanConvert(admin);
 	}
 
-	private AdministratorDto setEntityModelToDtoModel(Administrator admin) {
-		AdministratorDto adminDto = new AdministratorDto();
-
-		adminDto.setAdminId(admin.getAdminId());
-		adminDto.setAdminName(admin.getAdminName());
-		adminDto.setAdminEmail(admin.getAdminEmail());
-		adminDto.setAdminImageUrl(admin.getAdminImageUrl());
-		adminDto.setAboutAdmin(admin.getAboutAdmin());
+	private AdministratorDto beanConvert(Administrator admin) {
+		AdministratorDto adminDto = beanConverter.convert(admin,
+				AdministratorDto.class);
 
 		return adminDto;
 	}

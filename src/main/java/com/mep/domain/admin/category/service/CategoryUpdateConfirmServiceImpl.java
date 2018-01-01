@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mep.database.entity.Category;
 import com.mep.domain.admin.category.dao.CategoryUpdateConfirmDao;
 import com.mep.domain.admin.category.dto.CategoryDto;
+import com.mep.util.BeanConverter;
 import com.mep.util.DateUtil;
 
 @Service
@@ -16,22 +17,24 @@ public class CategoryUpdateConfirmServiceImpl implements
 
 	@Autowired
 	CategoryUpdateConfirmDao categoryUpdateConfirmDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean updateCategory(CategoryDto categoryDto) {
 
 		categoryUpdateConfirmDao
-				.updateCategory(setDtoModelToEntityModel(categoryDto));
+				.updateCategory(beanConvert(categoryDto));
 
 		return true;
 	}
 
-	private Category setDtoModelToEntityModel(CategoryDto categoryDto) {
-		Category category = new Category();
-
-		category.setCategoryId(categoryDto.getCategoryId());
-		category.setCategoryName(categoryDto.getCategoryName());
+	private Category beanConvert(CategoryDto categoryDto) {
+		Category category = beanConverter.convert(categoryDto,
+				Category.class);
+		
 		category.setUpdatedDate(DateUtil.getCurrentTime());
 
 		return category;

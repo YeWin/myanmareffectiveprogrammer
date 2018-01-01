@@ -41,13 +41,16 @@ updated_date timestamp without time zone
 );
 
 ALTER TABLE ONLY archive
-    ADD CONSTRAINT "post_idFK" FOREIGN KEY (post_id) REFERENCES post(post_id);
+    ADD CONSTRAINT "post_idFK" FOREIGN KEY (post_id) REFERENCES post(post_id)
+    ON DELETE CASCADE;
 
 ALTER TABLE ONLY post
-    ADD CONSTRAINT "admin_idFK" FOREIGN KEY (admin_id) REFERENCES administrator(admin_id);
+    ADD CONSTRAINT "admin_idFK" FOREIGN KEY (admin_id) REFERENCES administrator(admin_id)
+    ON DELETE CASCADE;
 
 ALTER TABLE ONLY post
-    ADD CONSTRAINT "category_idFK" FOREIGN KEY (category_id) REFERENCES category(category_id);
+    ADD CONSTRAINT "category_idFK" FOREIGN KEY (category_id) REFERENCES category(category_id)
+    ON DELETE CASCADE;
 
 ALTER TABLE administrator ALTER COLUMN admin_password TYPE character varying(200);
 

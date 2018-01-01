@@ -18,6 +18,7 @@ import com.mep.domain.admin.administrator.dto.AdministratorDto;
 import com.mep.handler.ApplicationException;
 import com.mep.message.DisplayMessage;
 import com.mep.message.ResultMessages;
+import com.mep.util.BeanConverter;
 import com.mep.util.DateUtil;
 import com.mep.util.StringUtil;
 
@@ -31,7 +32,10 @@ public class AdministratorInsertServiceImpl implements
 	@Autowired
 	AdministratorInsertDao administratorInsertDao;
 
-	@Override	
+	@Autowired
+	private BeanConverter beanConverter;
+
+	@Override
 	public ResultMessages validate(AdministratorDto adminDto) {
 
 		ResultMessages resultMessages = new ResultMessages();
@@ -120,23 +124,18 @@ public class AdministratorInsertServiceImpl implements
 	public boolean insertAdministrator(AdministratorDto adminDto)
 			throws ApplicationException {
 
-		administratorInsertDao
-				.insertAdministrator(setDtoModelToEntityModel(adminDto));
+		administratorInsertDao.insertAdministrator(beanConvert(adminDto));
 
 		return true;
 	}
 
-	private Administrator setDtoModelToEntityModel(AdministratorDto adminDto)
+	private Administrator beanConvert(AdministratorDto adminDto)
 			throws ApplicationException {
-		Administrator admin = new Administrator();
+		Administrator admin = beanConverter.convert(adminDto,
+				Administrator.class);
 
 		String encryptPassword = encryptPassword(adminDto.getAdminPassword());
-
-		admin.setAdminName(adminDto.getAdminName());
-		admin.setAdminEmail(adminDto.getAdminEmail());
 		admin.setAdminPassword(encryptPassword);
-		admin.setAdminImageUrl(adminDto.getAdminImageUrl());
-		admin.setAboutAdmin(adminDto.getAboutAdmin());
 		admin.setCreatedDate(DateUtil.getCurrentTime());
 
 		return admin;

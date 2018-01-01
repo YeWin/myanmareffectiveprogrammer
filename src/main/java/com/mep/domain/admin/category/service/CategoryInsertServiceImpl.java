@@ -24,12 +24,12 @@ public class CategoryInsertServiceImpl implements CategoryInsertService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean insertCategory(CategoryDto categoryDto) {
 
-		categoryInsertDao.insertCategory(setDtoModelToEntityModel(categoryDto));
+		categoryInsertDao.insertCategory(beanConvert(categoryDto));
 
 		return true;
 	}
 
-	private Category setDtoModelToEntityModel(CategoryDto categoryDto) {
+	private Category beanConvert(CategoryDto categoryDto) {
 		Category category = new Category();
 
 		category = beanConverter.convert(categoryDto, Category.class);		

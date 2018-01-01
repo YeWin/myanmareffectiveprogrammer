@@ -13,6 +13,7 @@ import com.mep.domain.user.article.dto.ArticleDashboardDto;
 import com.mep.domain.user.article.dto.ArticleSingleDto;
 import com.mep.domain.user.article.entity.ArticleDashboard;
 import com.mep.domain.user.article.entity.ArticleSingle;
+import com.mep.util.BeanConverter;
 import com.mep.util.StringUtil;
 
 @Service
@@ -20,6 +21,9 @@ public class ArticleSingleServiceImpl implements ArticleSingleService {
 
 	@Autowired
 	private ArticleSingleDao articleSingleDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -34,16 +38,8 @@ public class ArticleSingleServiceImpl implements ArticleSingleService {
 		List<ArticleSingleDto> singleDtoList = new ArrayList<>();
 
 		for (ArticleSingle single : singleList) {
-			ArticleSingleDto dto = new ArticleSingleDto();
-
-			dto.setAboutAdmin(single.getAboutAdmin());
-			dto.setAdminImageUrl(single.getAdminImageUrl());
-			dto.setAdminName(single.getAdminName());
-			dto.setContentType(single.getContentType());
-			dto.setCreatedDate(single.getCreatedDate());
-			dto.setPostContent(single.getPostContent());
-			dto.setPostTitle(single.getPostTitle());
-			dto.setPostTitleImgUrl(single.getPostTitleImgUrl());
+			ArticleSingleDto dto = beanConverter.convert(single,
+					ArticleSingleDto.class);
 
 			singleDtoList.add(dto);
 		}
@@ -64,15 +60,11 @@ public class ArticleSingleServiceImpl implements ArticleSingleService {
 		List<ArticleDashboardDto> dashboardDtoList = new ArrayList<>();
 
 		for (ArticleDashboard dashboard : lastSevenList) {
-			ArticleDashboardDto dto = new ArticleDashboardDto();
+			ArticleDashboardDto dto = beanConverter.convert(dashboard,
+					ArticleDashboardDto.class);
 
-			dto.setAdminName(dashboard.getAdminName());
-			dto.setCreatedDate(dashboard.getCreatedDate());
-			dto.setPostId(dashboard.getPostId());
-			dto.setPostTitle(dashboard.getPostTitle());
 			dto.setPostTitleEng(StringUtil.replaceWhiteSpaceWithHyphen(
 					dashboard.getPostTitleEng()).toLowerCase());
-			dto.setPostTitleImgUrl(dashboard.getPostTitleImgUrl());
 
 			dashboardDtoList.add(dto);
 		}

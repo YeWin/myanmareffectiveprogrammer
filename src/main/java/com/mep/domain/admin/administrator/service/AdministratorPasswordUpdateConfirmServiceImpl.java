@@ -18,6 +18,7 @@ import com.mep.domain.admin.administrator.dto.PasswordChangeDto;
 import com.mep.handler.ApplicationException;
 import com.mep.message.DisplayMessage;
 import com.mep.message.ResultMessages;
+import com.mep.util.BeanConverter;
 import com.mep.util.StringUtil;
 
 @Service
@@ -29,6 +30,9 @@ public class AdministratorPasswordUpdateConfirmServiceImpl implements
 
 	@Autowired
 	AdministratorUpdateConfirmDao administratorUpdateConfirmDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@Override
 	public ResultMessages validatePassword(PasswordChangeDto passwordChangeDto) throws ApplicationException {
@@ -96,18 +100,17 @@ public class AdministratorPasswordUpdateConfirmServiceImpl implements
 			PasswordChangeDto passwordChangeDto) throws ApplicationException {
 
 		administratorUpdateConfirmDao
-				.updateAdministrator(setDtoModelToEntityModel(passwordChangeDto));
+				.updateAdministrator(beanConvert(passwordChangeDto));
 
 		return true;
 	}
 
-	private Administrator setDtoModelToEntityModel(
+	private Administrator beanConvert(
 			PasswordChangeDto passwordChangeDto) throws ApplicationException {
-		Administrator admin = new Administrator();
+		Administrator admin = beanConverter.convert(passwordChangeDto,
+				Administrator.class);
 		
 		String encryptPassword = encryptPassword(passwordChangeDto.getNewAdminPassword());
-
-		admin.setAdminId(passwordChangeDto.getAdminId());
 		admin.setAdminPassword(encryptPassword);
 
 		return admin;

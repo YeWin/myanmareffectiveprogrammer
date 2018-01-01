@@ -8,12 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mep.database.entity.Category;
 import com.mep.domain.admin.category.dao.CategoryUpdateDao;
 import com.mep.domain.admin.category.dto.CategoryDto;
+import com.mep.util.BeanConverter;
 
 @Service
 public class CategoryUpdateServiceImpl implements CategoryUpdateService {
 
 	@Autowired
 	CategoryUpdateDao categoryUpdateDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -21,14 +25,12 @@ public class CategoryUpdateServiceImpl implements CategoryUpdateService {
 
 		Category category = categoryUpdateDao.getCategoryById(categoryId);
 
-		return setEntityModelToDtoModel(category);
+		return beanConvert(category);
 	}
 
-	private CategoryDto setEntityModelToDtoModel(Category category) {
-		CategoryDto categoryDto = new CategoryDto();
-
-		categoryDto.setCategoryId(category.getCategoryId());
-		categoryDto.setCategoryName(category.getCategoryName());
+	private CategoryDto beanConvert(Category category) {
+		CategoryDto categoryDto = beanConverter.convert(category,
+				CategoryDto.class);
 
 		return categoryDto;
 	}

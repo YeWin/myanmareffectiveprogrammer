@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mep.domain.user.article.dao.ArticleDashboardDao;
 import com.mep.domain.user.article.dto.ArticleDashboardDto;
 import com.mep.domain.user.article.entity.ArticleDashboard;
+import com.mep.util.BeanConverter;
 import com.mep.util.StringUtil;
 
 @Service
@@ -18,6 +19,9 @@ public class ArticleDashboradServiceImpl implements ArticleDashboradService {
 
 	@Autowired
 	private ArticleDashboardDao articleDashboardDao;
+	
+	@Autowired
+	private BeanConverter beanConverter;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -35,16 +39,11 @@ public class ArticleDashboradServiceImpl implements ArticleDashboradService {
 		List<ArticleDashboardDto> dashboardDtoList = new ArrayList<>();
 
 		for (ArticleDashboard dashboard : dashboardList) {
-			ArticleDashboardDto dto = new ArticleDashboardDto();
-					
-			dto.setAdminName(dashboard.getAdminName());
-			dto.setCreatedDate(dashboard.getCreatedDate());
-			dto.setPostId(dashboard.getPostId());
-			dto.setPostTitle(dashboard.getPostTitle());
+			ArticleDashboardDto dto = beanConverter.convert(dashboard,
+					ArticleDashboardDto.class);
+			
 			dto.setPostTitleEng(StringUtil.replaceWhiteSpaceWithHyphen(dashboard
 					.getPostTitleEng()).toLowerCase());
-			dto.setPostTitleImgUrl(dashboard.getPostTitleImgUrl());
-			dto.setContentType(dashboard.getContentType());
 			
 			dashboardDtoList.add(dto);
 		}
