@@ -1,0 +1,22 @@
+.search form{
+	background:#fff;
+	border-radius:5px;
+	border:1px solid #ccc;
+}
+
+.search input{
+	border:0px;
+	font-size:14px;
+}
+
+.search input[type=submit]{
+  background: url(/theme/img/custom/search-icon.png) no-repeat right center;
+ width: 50px;
+  height: 20px;
+  border: 0px;
+  font-size: 0px;
+}
+
+.search input[type=submit]:hover{
+  background-color:none !important;
+}

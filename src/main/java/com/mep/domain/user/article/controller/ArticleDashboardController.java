@@ -33,7 +33,8 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 		List<ArticleDashboardDto> articleDashboardList = dashboradService
 				.searchArticleList(searchValue);
 
-		mav.addObject("articleDashboardList", articleDashboardList);
+		mav.addObject("articleDashboardList", getMaxonaryList(articleDashboardList));		
+		mav.addObject("pageTitle", "You searched for " + searchValue);
 
 		return mav;
 	}

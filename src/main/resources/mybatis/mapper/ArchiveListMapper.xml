@@ -5,8 +5,6 @@
 
 <mapper namespace="com.mep.domain.user.archive.mapper.ArchiveListMapper">
 
-
-
 	<select id="getArchiveList" resultType="com.mep.domain.user.archive.entity.ArchiveList">	
 	
 		SELECT
@@ -23,41 +21,4 @@
 			(archive.post_id = post.post_id)
 		ORDER By 1 desc, 2 desc;
 	</select>
-
-	<!-- <resultMap type="com.mep.domain.user.archive.dto.ArchiveYearListDto"
-		id="YearListDto">
-		<result column="year" property="year" />
-		<collection property="monthList" javaType="ArrayList"
-			column="year" ofType="com.mep.domain.user.archive.dto.ArchiveMonthListDto"
-			select="ArchiveMonthList" />
-	</resultMap>
-
-	<select id="getArchiveList" resultMap="YearListDto">
-		SELECT
-			DISTINCT year
-		FROM
-			archive
-	</select>
-	
-	<resultMap type="com.mep.domain.user.archive.dto.ArchiveMonthListDto"
-		id="MonthListDto">
-		<result column="year" property="year" />
-		<collection property="monthList" javaType="ArrayList"
-			column="year" ofType="com.mep.domain.user.archive.dto.ArchiveMonthListDto"
-			select="ArchiveMonthList" />
-	</resultMap>
-
-	<select id="ArchiveMonthList" resultMap="MonthListDto">
-		SELECT
-			month
-		FROM
-			archive
-		WHERE 
-			year
-		IN
-			<foreach item="year" index="index" collection="list"
-      				open="(" separator="," close=")">
-        		#{year}
-  			</foreach>
-	</select> -->
 </mapper>

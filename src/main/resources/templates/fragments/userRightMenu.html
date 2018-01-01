@@ -13,15 +13,22 @@
 	
 	          <div class="sidebar-module">
 	            <div class="form-group">
-	              <input type="text" class="form-control" placeholder="Search" />
+	              <div class="search">
+					<form th:action="@{/searchArticle}" method="get">
+						<input name="searchValue" class="text-center" type="text" th:value="*{searchValue}"
+							placeholder="Search" /> <input type="submit"
+							class="btn btn-danger" />
+					</form>
+				  </div>
 	            </div>
 	          </div><!-- /.sidebar-module -->
 	
 	          <div class="sidebar-module">
 	            <div class="panel panel-default">
 	              <div class="panel-body">
-	                <h4>About</h4>
-	                <p>This is Ye Win.</p>
+	                <h4><img th:src="@{/theme/img/custom/yewin.png}" class="img-responsive img-circle" /> </h4>
+	                <p>Hi, I'm Ye Win, the Founder of Myanmar Effective Programmer and General Manager of Tech Fun Myanmar Co., Ltd. </p>
+	                <p>I created Myanmar Effective Programmer with the goal of solving the complex things to simple.</p>
 	              </div>
 	            </div>
 	          </div><!-- /.sidebar-module -->
