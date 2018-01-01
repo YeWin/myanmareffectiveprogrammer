@@ -18,7 +18,7 @@ import com.mep.domain.user.article.service.ArticleSingleService;
 import com.mep.util.StringUtil;
 
 @Controller
-public class ArticleSingleController {
+public class ArticleSingleController extends ArticleControllerHelper {
 
 	private static final String ARTICLE_PATH = "user/article/articleDetails";
 
@@ -46,7 +46,7 @@ public class ArticleSingleController {
 				.getLastSevenArticle(StringUtil
 						.replaceHyphenWithWhiteSpace(postTitleEng));
 
-		mav.addObject("articleDashboardList", lastSevenList);
+		mav.addObject("articleDashboardList", getMaxonaryList(lastSevenList));
 
 		mav.addObject("articleSingleDto", articleSingleDto);
 

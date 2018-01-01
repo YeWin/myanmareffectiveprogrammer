@@ -42,7 +42,8 @@
 			post.post_title_img_url,
 			post.post_title_eng,
 			post.created_date,
-			admin.admin_name
+			admin.admin_name,
+			post.content_type
 		FROM
 			post
 		JOIN
