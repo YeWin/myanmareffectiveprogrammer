@@ -1,21 +1,29 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<div th:replace="fragments/adminHeader :: admin-header-css" />
-</head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="fragments/userHomeLayout" lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <title>500 - Myanmar Effective Programmer</title>
+	
+  </head>
 <body>
 
-	<div class="container">
+	<div layout:fragment="content">
 
-		<div class="starter-template">
-			<h1>
-				Sorry! Server is under maintenance.<br /> Please come back later.
-			</h1>
+		<div class="container blog-content">
+	
+			<div class="starter-template">
+				<h1>
+					Sorry! Server is under maintenance.<br /> Please come back later.
+				</h1>
+			</div>
+	
 		</div>
+		<!-- /.container -->
 
 	</div>
-
-	<div th:replace="fragments/footer :: footer" />
 
 </body>
 </html>

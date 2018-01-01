@@ -144,7 +144,6 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 	
 	private List<List<ArticleDashboardDto>> getDashboardData(String category) {		
 		
-		// Trick for iterate 3 time per one row.
 		List<ArticleDashboardDto> dashboardList = dashboradService
 				.getArticleDashboardList(category);
 

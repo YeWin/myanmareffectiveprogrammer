@@ -1,22 +1,29 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<div th:replace="fragments/adminHeader :: admin-header-css" />
-</head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="fragments/userHomeLayout" lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <title>403 - Myanmar Effective Programmer</title>
+	
+  </head>
 <body>
 
-	<div class="container">
-
-		<div class="starter-template">
-			<h1>403 - Access is denied</h1>
-			<div th:inline="text">You do not have permission to access this
-				page.</div>
+	<div layout:fragment="content">
+	
+		<div class="container blog-content">
+	
+			<div class="starter-template">
+				<h1>403 - Access is denied</h1>
+				<div th:inline="text">You do not have permission to access this
+					page.</div>
+			</div>
+	
 		</div>
-
+		<!-- /.container -->
+	
 	</div>
-	<!-- /.container -->
-
-	<div th:replace="fragments/footer :: footer" />
 
 </body>
 </html>
