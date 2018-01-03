@@ -20,3 +20,9 @@
 .search input[type=submit]:hover{
   background-color:none !important;
 }
+
+.carousel-caption {
+    top: 3%;
+    left: 5%;
+    bottom: auto;
+}
