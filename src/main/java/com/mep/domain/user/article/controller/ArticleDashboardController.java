@@ -33,7 +33,7 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 		List<ArticleDashboardDto> articleDashboardList = dashboradService
 				.searchArticleList(searchValue);
 
-		mav.addObject("articleDashboardList", getMaxonaryList(articleDashboardList));		
+		mav.addObject("articleDashboardList", articleDashboardList);
 		mav.addObject("pageTitle", "You searched for " + searchValue);
 
 		return mav;
@@ -142,12 +142,17 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 		return mav;
 	}
 	
-	private List<List<ArticleDashboardDto>> getDashboardData(String category) {		
+	private List<ArticleDashboardDto> getDashboardData(String category) {		
 		
-		List<ArticleDashboardDto> dashboardList = dashboradService
+		/*List<ArticleDashboardDto> dashboardList = dashboradService
 				.getArticleDashboardList(category);
 
-		return getMaxonaryList(dashboardList);
+		return getMaxonaryList(dashboardList);*/
+		
+		List<ArticleDashboardDto> articleDashboardList = dashboradService
+				.getArticleDashboardList(category);
+		
+		return articleDashboardList;
 	}
 
 	public String getSearchValue() {

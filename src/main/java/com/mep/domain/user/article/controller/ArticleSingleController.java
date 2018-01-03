@@ -46,7 +46,7 @@ public class ArticleSingleController extends ArticleControllerHelper {
 				.getLastSevenArticle(StringUtil
 						.replaceHyphenWithWhiteSpace(postTitleEng));
 
-		mav.addObject("articleDashboardList", getMaxonaryList(lastSevenList));
+		mav.addObject("articleDashboardList", lastSevenList);
 
 		mav.addObject("articleSingleDto", articleSingleDto);
 

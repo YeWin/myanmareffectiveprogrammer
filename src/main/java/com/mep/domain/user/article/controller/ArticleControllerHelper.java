@@ -16,6 +16,9 @@ public abstract class ArticleControllerHelper {
 	    List<ArticleDashboardDto> tempList = new LinkedList<ArticleDashboardDto>();
 
 	    int listSize = dashboardList.size();
+	    
+	    //int rowList = listSize/3 + 1;
+	    
 	    for ( int i = 0; i < listSize; i++ )
 	    {
 	        tempList.add( dashboardList.get( i ) );
