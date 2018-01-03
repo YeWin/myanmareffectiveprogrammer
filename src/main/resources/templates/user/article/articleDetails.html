@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	layout:decorator="fragments/userHomeLayout" lang="en">
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	  layout:decorator="fragments/userHomeLayout" lang="en">
   <head>
-    
-    <meta charset="UTF-8" />
     <title th:text="${#strings.capitalize(pageTitle)} + ' - Myanmar Effective Programmer'"></title>	
     
 	<script th:src="@{/theme/js/custom/social.js}"></script>
   </head>
 
-  <body>  	
-
+  <body>
+  
 	<div layout:fragment="content" >
 
     <div class="container blog-content">
@@ -27,7 +25,7 @@
 	              			'https://github.com/YeWin/MEP_Images/blob/master/tutorial_1.jpeg?raw=true'}" class="img-responsive" />
 	              <div class="panel-body">
 	                <div class="blog-post-meta">
-	                  <span class="label label-light label-warning">Apps</span>                                   
+	                  <span class="label label-light label-warning">Apps</span>	                  
 	                  <p class="blog-post-date pull-right"><span
 								th:utext="${#dates.format(article.createdDate, 'MMMMM dd, yyyy')}"></span>
 							/ BY <span th:utext="${article.adminName}"></span></p>
@@ -38,7 +36,7 @@
 	          			<br/>
 	          		</div>
 	                <div class="blog-post-content">
-	                  <h2 class="blog-post-title"><span th:utext="${article.postTitle} "></span></h2>
+	                  <h1 class="blog-post-title"><span th:utext="${article.postTitle} "></span></h1>
 	                  
 	                  <span th:remove="tag" th:utext="${article.postContent} "></span>
 	
