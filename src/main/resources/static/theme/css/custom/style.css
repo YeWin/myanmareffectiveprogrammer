@@ -26,3 +26,10 @@
     left: 5%;
     bottom: auto;
 }
+
+.blog-post-meta {
+    padding: 16px 22px;
+    color: #999;
+    display: block;
+    border-bottom: none!important;
+}
