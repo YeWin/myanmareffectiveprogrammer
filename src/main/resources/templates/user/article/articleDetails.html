@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	  layout:decorator="fragments/userHomeLayout" lang="en">
+	  layout:decorator="fragments/userHomeLayout" lang="en" xmlns:og="http://ogp.me/ns#" >
   <head>
+  
+  	<meta name="og:title" content="Hello Facebook" />
+  	<meta name="og:image" content="https://github.com/YeWin/MEP_Images/blob/master/blog.png?raw=true" />
+  	<meta name="og:image:secure_url" content="https://github.com/YeWin/MEP_Images/blob/master/blog.png?raw=true">
+  	
     <title th:text="${#strings.capitalize(pageTitle)} + ' - Myanmar Effective Programmer'"></title>	
     
 	<script th:src="@{/theme/js/custom/social.js}"></script>
