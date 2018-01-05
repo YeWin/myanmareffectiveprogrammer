@@ -40,14 +40,16 @@
 						<script>
 							document.getElementById('shareBtn').onclick = function() {
 							  FB.ui({
-							    method: 'share',
-							    hashtag: '#mep',
-							    title: 'your_title',  // The same than name in feed method
-						        picture: 'https://github.com/YeWin/MEP_Images/blob/master/blog.png?raw=true',  
-						        caption: 'your_caption',  
-						        description: 'your_description',
-							    display: 'popup',
-							    href: 'http://www.myanmareffectiveprogrammer.com/2018-01-03/about-myanmar-effective-programmer',
+								  method: 'share_open_graph',
+							        action_type: 'og.shares',
+							        action_properties: JSON.stringify({
+							            object: {
+							                'og:url': 'http://www.myanmareffectiveprogrammer.com/2018-01-03/about-myanmar-effective-programmer',
+							                'og:title': 'My Title',
+							                'og:description': 'My Description',
+							                'og:image': 'https://github.com/YeWin/MEP_Images/blob/master/blog.png?raw=true'
+							            }
+							        })
 							  }, function(response){});
 							}
 						</script>
