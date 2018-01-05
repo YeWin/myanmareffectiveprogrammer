@@ -30,30 +30,7 @@
 							/ BY <span th:utext="${article.adminName}"></span></p>
 	                </div>
 	          		
-	          		<div class="blog-post-content">
-	          			<!-- <div class="fb-share-button" data-href="http://www.myanmareffectiveprogrammer.com/2018-01-03/about-myanmar-effective-programmer" 
-	          				data-layout="button_count" data-size="small" data-mobile-iframe="false">
-	          				<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.myanmareffectiveprogrammer.com%2F2018-01-03%2Fabout-myanmar-effective-programmer&amp;src=sdkpreparse">
-	          				Share</a>
-	          			</div> -->	          			
-						<div id="shareBtn" class="btn btn-success clearfix">Share</div>
-						<script>
-							document.getElementById('shareBtn').onclick = function() {
-							  FB.ui({
-								  method: 'share_open_graph',
-							        action_type: 'og.shares',
-							        action_properties: JSON.stringify({
-							            object: {
-							                'og:url': 'http://www.myanmareffectiveprogrammer.com/2018-01-03/about-myanmar-effective-programmer',
-							                'og:title': 'My Title',
-							                'og:description': 'My Description',
-							                'og:image': 'https://github.com/YeWin/MEP_Images/blob/master/blog.png?raw=true'
-							            }
-							        })
-							  }, function(response){});
-							}
-						</script>
-						
+	          		<div class="blog-post-content">						
 	          			<div th:replace="user/common/shareOnSocial :: share-on-social"></div>
 	          			<br/>
 	          		</div>
