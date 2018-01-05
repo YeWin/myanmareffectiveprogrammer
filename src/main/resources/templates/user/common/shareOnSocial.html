@@ -8,11 +8,11 @@
 	<div th:fragment="share-on-social">						
 		<ul class="nav navbar-nav navbar-right">
 			<li id="shareBtn" style="cursor: pointer;">
-				<i class="fa fa-facebook-square fa-3x"></i>
+				<a><i class="fa fa-facebook-square fa-3x" style="color:#03a9f4;"></i></a>
 			</li>
 			
 			<li><a target="popup" href="javascript: void(0)"
-				th:onClick="'javascript:lkShare(\'' + ${blogUrl} + ${#httpServletRequest.requestURI} + '\');'">
+				th:onClick="'javascript:lkShare(\'' + ${blogUrl} + ${#httpServletRequest.requestURI} + '\', \'' + ${#strings.capitalize(pageTitle)} + ' - Myanmar Effective Programmer' + '\');'">
 					<i class="fa fa-linkedin-square fa-3x"></i>
 			</a></li>
 			<li><a target="popup" href="javascript: void(0)"
@@ -24,9 +24,9 @@
 		<script th:inline="javascript">
 			document.getElementById('shareBtn').onclick = function() {
 				
-				var image = [[${(!#strings.isEmpty(article.postTitleImgUrl)) ? article.postTitleImgUrl : 'https://github.com/YeWin/MEP_Images/blob/master/tutorial_1.jpeg?raw=true'}]];
-			    var title = [[${#strings.capitalize(pageTitle)}]] + ' - Myanmar Effective Programmer';
-			    var link = [[${blogUrl}]] + [[${#httpServletRequest.requestURI}]];
+			var image = [[${(!#strings.isEmpty(article.postTitleImgUrl)) ? article.postTitleImgUrl : 'https://github.com/YeWin/MEP_Images/blob/master/tutorial_1.jpeg?raw=true'}]];
+		    var title = [[${#strings.capitalize(pageTitle)}]] + ' - Myanmar Effective Programmer';
+		    var link = [[${blogUrl}]] + [[${#httpServletRequest.requestURI}]];
 			    
 			  FB.ui({
 				    method: 'share_open_graph',
