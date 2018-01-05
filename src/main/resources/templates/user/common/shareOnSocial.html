@@ -5,31 +5,7 @@
 <head>
 </head>
 <body>
-	<div th:fragment="share-on-social">
-		<!-- <div id="shareBtn" class="btn btn-success clearfix">ShareT</div>
-						<script th:inline="javascript">
-							document.getElementById('shareBtn').onclick = function() {
-								
-								var image = [[${(!#strings.isEmpty(article.postTitleImgUrl)) ? article.postTitleImgUrl : 'https://github.com/YeWin/MEP_Images/blob/master/tutorial_1.jpeg?raw=true'}]];
-							    var title = [[${#strings.capitalize(pageTitle)}]];
-							    var link = [[${blogUrl}]] + [[${#httpServletRequest.requestURI}]];
-							    
-							  FB.ui({
-								    method: 'share_open_graph',
-								    hashtag: '#mep',
-								    display: 'popup',
-							        action_type: 'og.shares',
-							        action_properties: JSON.stringify({
-							            object: {
-							                'og:url': link,
-							                'og:title': title,
-							                'og:image': image
-							            }
-							        })
-							  }, function(response){});
-							}
-		</script> -->
-						
+	<div th:fragment="share-on-social">						
 		<ul class="nav navbar-nav navbar-right">
 			<li id="shareBtn" style="cursor: pointer;">
 				<i class="fa fa-facebook-square fa-3x"></i>
@@ -49,7 +25,7 @@
 			document.getElementById('shareBtn').onclick = function() {
 				
 				var image = [[${(!#strings.isEmpty(article.postTitleImgUrl)) ? article.postTitleImgUrl : 'https://github.com/YeWin/MEP_Images/blob/master/tutorial_1.jpeg?raw=true'}]];
-			    var title = [[${#strings.capitalize(pageTitle)}]];
+			    var title = [[${#strings.capitalize(pageTitle)}]] + ' - Myanmar Effective Programmer';
 			    var link = [[${blogUrl}]] + [[${#httpServletRequest.requestURI}]];
 			    
 			  FB.ui({
