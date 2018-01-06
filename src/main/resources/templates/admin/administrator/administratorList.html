@@ -43,7 +43,7 @@
 							<tr th:each="admin : ${adminList}">
 								<td th:text="${admin.adminName}"></td>
 								<td th:text="${admin.adminEmail}"></td>
-								<td><img class="adminImageList"
+								<td><img class="img-responsive"
 									th:src="${(!#strings.isEmpty(admin.adminImageUrl)) ? admin.adminImageUrl : ''}"
 									th:alt="${admin.adminName}" /></td>
 								<td th:utext="${admin.aboutAdmin}"></td>

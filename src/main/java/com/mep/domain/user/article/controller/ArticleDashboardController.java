@@ -116,32 +116,6 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 		return mav;
 	}
 	
-	@GetMapping(value = { "/contact-us" })
-	public @ResponseBody ModelAndView getContactUs()
-			throws Exception {
-
-		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
-		
-		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[6]));
-		
-		mav.addObject("pageTitle", Constant.MENU[6]);
-
-		return mav;
-	}
-	
-	@GetMapping(value = { "/write-for-us" })
-	public @ResponseBody ModelAndView getWriteForUs()
-			throws Exception {
-
-		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
-		
-		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[7]));
-		
-		mav.addObject("pageTitle", Constant.MENU[7]);
-
-		return mav;
-	}
-	
 	private List<ArticleDashboardDto> getDashboardData(String category) {		
 		
 		/*List<ArticleDashboardDto> dashboardList = dashboradService
