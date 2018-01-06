@@ -1,17 +1,16 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="fragments/adminHomeLayout" lang="en">
+<head>
 <title>Category - Myanmar Effective Programmer</title>
-
-<div th:replace="fragments/adminHeader :: admin-header-css" />
-
+<script th:src="@{/theme/ckeditor/ckeditor.js}"></script>
 </head>
 <body>
 
-	<div th:replace="fragments/adminHeader :: admin-header"></div>
+	<div layout:fragment="content">
 
-	<div class="container">
+	<div class="container blog-content">
 
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -41,7 +40,7 @@
 
 	</div>
 
-	<div th:replace="fragments/footer :: footer"></div>
+	</div>
 
 </body>
 </html>
