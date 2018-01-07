@@ -53,17 +53,15 @@
 	              <div class="panel-group" id="accordion1">			
 			            <div class="panel panel-success">
 			                <div class="panel-heading">
-			                    <h4 class="panel-title">
-			                        <a data-toggle="collapse" data-parent="#accordion1" th:href="${'#collapseTwo' + iter.index}"><span th:text="${year.year}"></span>
+			                        <a class="panel-title" data-toggle="collapse" data-parent="#accordion1" th:href="${'#collapseTwo' + iter.index}">♦ <span th:text="${year.year}"></span>
 			                        </a>
-			                    </h4>
 			                </div>
 			                <div th:id="${'collapseTwo' + iter.index}" class="panel-collapse collapse">
 			                    <div class="panel-body">
 			                        <div class="panel-body">			                            
 			                            <div class="panel-group" id="accordion21">
 			                            	<div th:each="month, iterMonth : ${year.monthList}">
-			                                <div class="panel">
+			                                <div>
 			                                    <a data-toggle="collapse" data-parent="#accordion21" th:href="${'#collapseTwoOne'+ iter.index + iterMonth.index}"><span th:text="${month.month}"></span> &raquo;
 			                                    </a>
 			                                    <div th:id="${'collapseTwoOne'+ iter.index + iterMonth.index}" class="panel-collapse collapse">

@@ -1,3 +1,140 @@
+/* -- PADDING -- */
+.nopadding {
+	padding: 0 !important;
+	margin: 0 auto;
+}
+
+.padding-small {
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
+}
+.padding-medium{
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+.padding-large{
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+.padding-extralarge{
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+}
+
+.paddingtop-small {
+	padding-top: 15px !important;
+}
+.paddingtop-medium {
+  padding-top: 30px !important;
+}
+.paddingtop-large {
+  padding-top: 50px !important;
+}
+.paddingtop-extralarge {
+  padding-top: 100px !important;
+}
+
+.paddingbottom-small {
+	padding-bottom: 15px !important;
+}
+.paddingbottom-medium {
+  padding-bottom: 30px !important;
+}
+.paddingbottom-large {
+  padding-bottom: 50px !important;
+}
+.paddingbottom-extralarge {
+  padding-bottom: 100px !important;
+}
+
+.paddingside-small {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+.paddingside-medium {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+.paddingside-large {
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+}
+.paddingside-extralarge {
+  padding-left: 100px !important;
+  padding-right: 100px !important;
+}
+/* -- END PADDING -- */
+
+/* -- MARGIN -- */
+.nomargin {
+  margin: 0 auto;
+}
+
+.margin-small {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+.margin-medium{
+  padding-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+.margin-large{
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+}
+.margin-extralarge{
+  margin-top: 80px !important;
+  margin-bottom: 80px !important;
+}
+
+.margintop-small {
+  margin-top: 15px !important;
+}
+.margintop-medium {
+  margin-top: 30px !important;
+}
+.margintop-large {
+  margin-top: 50px !important;
+}
+.margintop-extralarge {
+  margin-top: 80px !important;
+}
+
+.marginbottom-small {
+  margin-bottom: 15px !important;
+}
+.marginbottom-medium {
+  margin-bottom: 30px !important;
+}
+.marginbottom-large {
+  margin-bottom: 50px !important;
+}
+.marginbottom-extralarge {
+  margin-bottom: 80px !important;
+}
+
+.marginside-small {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+.marginside-medium {
+  margin-left: 30px !important;
+  margin-right: 30px !important;
+}
+.marginside-large {
+  margin-left: 50px !important;
+  margin-right: 50px !important;
+}
+.marginside-extralarge {
+  margin-left: 80px !important;
+  margin-right: 80px !important;
+}
+/* -- END MARGIN -- */
+
+
+/* -- SEARCH -- */
 .search form{
 	background:#fff;
 	border-radius:5px;
@@ -11,7 +148,7 @@
 
 .search input[type=submit]{
   background: url(/theme/img/custom/search-icon.png) no-repeat right center;
- width: 50px;
+  width: 50px;
   height: 20px;
   border: 0px;
   font-size: 0px;
@@ -20,16 +157,50 @@
 .search input[type=submit]:hover{
   background-color:none !important;
 }
+/* -- END SEARCH -- */
 
-.carousel-caption {
-    top: 3%;
-    left: 5%;
-    bottom: auto;
+.img-responsive, .item-responsive *{
+	width:100%;
+	height:auto;
+}
+
+.blog-post-summary .panel{
+    min-height: 420px;
+}
+
+.blog-post-summary .panelTutorial{
+    min-height: 200px;
+}
+
+/* -- THEME CUSTOM -- */
+.sidebar-module .panel-title{
+	margin: 0px !important;
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+.sidebar-module .panel-title:hover,
+.sidebar-module .panel-title:visited{
+	text-decoration:none;
+	color:#fff;
+}
+
+.navbar .navbar-nav > li > a{
+	font-size:16px;
 }
 
 .blog-post-meta {
-    padding: 16px 22px;
-    color: #999;
-    display: block;
+    padding: 20px 22px;
     border-bottom: none!important;
+}
+
+.blog-comments-title, .blog-post-title{
+	    font-size: 20px !important;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px !important;
+  }
 }
