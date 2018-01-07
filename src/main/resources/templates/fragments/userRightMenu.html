@@ -28,7 +28,7 @@
 	              <div class="panel-body">
 	                <h4> ABOUT THE AUTHOR	                
 	                </h4>
-	                <p><img th:src="@{/theme/img/custom/yewin.png}" class="img-responsive img-circle" /> </p>
+	                <p><img th:src="${article.adminImageUrl}" class="img-responsive img-circle" /> </p>
 	                <span th:utext="${article.aboutAdmin}"></span>
 	                
                 	<p class="pull-right">
