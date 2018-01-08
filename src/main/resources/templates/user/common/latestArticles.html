@@ -25,14 +25,11 @@
               <div class="panel-body">
               	<div class="blog-post-content">
 	          	 <div th:each="article : ${articleDashboardList}">
-		            <div class="col-sm-4">
+		            <div class="col-sm-4 blog-post-summary">
 		              <section class="blog-post">
 		                <div class="panel panel-default">	                  
 		                  <div th:switch="${article.contentType}"> 
-							  <p th:case="0"><img th:src="${(!#strings.isEmpty(article.postTitleImgUrl)) ? article.postTitleImgUrl : ''}" class="img-responsive" /> 
-							  	</p>				  
-							  <p th:case="*">
-							  	</p> 
+							  <img th:src="${(!#strings.isEmpty(article.postTitleImgUrl)) ? article.postTitleImgUrl : ''}" class="img-responsive" th:case="0"/>							   
 						  </div>	                  
 		                  <div class="panel-body">
 		                    <div class="blog-post-meta">
