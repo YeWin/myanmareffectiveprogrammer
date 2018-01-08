@@ -3,8 +3,10 @@ package com.mep.domain.user.article.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +21,9 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 	private static final String ARTICLE_PATH = "user/article/articleDashboard";
 
 	private String searchValue;
+	
+	@Value("${disqus.status}")
+	private String disqusStatus;
 	
 	@Autowired
 	private ArticleDashboradService dashboradService;
@@ -135,5 +140,14 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 
 	public void setSearchValue(String searchValue) {
 		this.searchValue = searchValue;
+	}
+
+	@ModelAttribute("disqusStatus")
+	public String getDisqusStatus() {
+		return disqusStatus;
+	}
+
+	public void setDisqusStatus(String disqusStatus) {
+		this.disqusStatus = disqusStatus;
 	}
 }
