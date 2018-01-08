@@ -22,8 +22,8 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 
 	private String searchValue;
 	
-	@Value("${disqus.status}")
-	private String disqusStatus;
+	@Value("${analytics.enable}")
+	private String analyticsStatus;
 	
 	@Autowired
 	private ArticleDashboradService dashboradService;
@@ -142,12 +142,12 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 		this.searchValue = searchValue;
 	}
 
-	@ModelAttribute("disqusStatus")
-	public String getDisqusStatus() {
-		return disqusStatus;
+	@ModelAttribute("analyticsStatus")
+	public String getAnalyticsStatus() {
+		return analyticsStatus;
 	}
 
-	public void setDisqusStatus(String disqusStatus) {
-		this.disqusStatus = disqusStatus;
-	}
+	public void setAnalyticsStatus(String analyticsStatus) {
+		this.analyticsStatus = analyticsStatus;
+	}	
 }
