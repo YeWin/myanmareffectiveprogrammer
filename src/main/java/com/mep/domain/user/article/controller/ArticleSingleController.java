@@ -27,6 +27,9 @@ public class ArticleSingleController extends ArticleControllerHelper {
 
 	@Autowired
 	private ArchiveListService archiveListService;
+	
+	@Value("${analytics.enable}")
+	private String analyticsStatus;
 
 	@Value("${blog.url}")
 	private String blogUrl;
@@ -67,5 +70,14 @@ public class ArticleSingleController extends ArticleControllerHelper {
 
 	public void setBlogUrl(String blogUrl) {
 		this.blogUrl = blogUrl;
+	}
+	
+	@ModelAttribute("analyticsStatus")
+	public String getAnalyticsStatus() {
+		return analyticsStatus;
+	}
+
+	public void setAnalyticsStatus(String analyticsStatus) {
+		this.analyticsStatus = analyticsStatus;
 	}
 }
