@@ -165,11 +165,11 @@
 }
 
 .blog-post-summary .panel{
-    min-height: 435px;
+    min-height: 490px;
 }
 
 .blog-post-summary .panelTutorial{
-    min-height: 200px;
+    min-height: 255px;
 }
 
 /* -- THEME CUSTOM -- */
