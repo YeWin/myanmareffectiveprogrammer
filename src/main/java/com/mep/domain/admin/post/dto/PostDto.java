@@ -1,7 +1,6 @@
 package com.mep.domain.admin.post.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.validator.constraints.NotBlank;
