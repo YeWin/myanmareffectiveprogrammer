@@ -32,18 +32,8 @@
 		    var link = [[${blogUrl}]] + [[${#httpServletRequest.requestURI}]];
 			    
 			  FB.ui({
-				    method: 'share_open_graph',
-				    hashtag: '#mep',				    
-			        action_type: 'og.shares',
-			        action_properties: JSON.stringify({
-			            object: {
-			                'og:url': link,
-			                'og:title': title,
-			                'og:image': image,
-			                'og:image:width': 1280,
-			                'og:image:height': 720
-			            }
-			        })
+				    method: 'share',
+				    href: link,
 			  }, function(response){});
 			}
 		</script>
