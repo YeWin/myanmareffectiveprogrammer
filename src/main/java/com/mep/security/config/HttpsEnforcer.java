@@ -37,7 +37,7 @@ public class HttpsEnforcer implements Filter {
                 response.sendRedirect("https://" + request.getServerName() + pathInfo);
                 
                 logger.debug("Server Name = " + request.getServerName());
-                logger.debug("PathInfo Name = " + request.getPathInfo());
+                logger.debug("PathInfo Name = " + pathInfo);
                 return;
             }
         }        
