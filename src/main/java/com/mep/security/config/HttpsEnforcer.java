@@ -33,13 +33,14 @@ public class HttpsEnforcer implements Filter {
 
         if (request.getHeader(X_FORWARDED_PROTO) != null) {
             if (request.getHeader(X_FORWARDED_PROTO).indexOf("https") != 0) {
-                response.sendRedirect("https://" + request.getServerName() + request.getPathInfo() == null ? "" : request.getPathInfo());
+            	String pathInfo = (request.getPathInfo() != null) ? request.getPathInfo() : "";
+                response.sendRedirect("https://" + request.getServerName() + pathInfo);
+                
+                logger.debug("Server Name = " + request.getServerName());
+                logger.debug("PathInfo Name = " + request.getPathInfo());
                 return;
             }
-        }
-
-        logger.debug("Server Name = " + request.getServerName());
-        logger.debug("PathInfo Name = " + request.getPathInfo());
+        }        
         filterChain.doFilter(request, response);
     }
 
