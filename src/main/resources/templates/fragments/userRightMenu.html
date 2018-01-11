@@ -62,7 +62,7 @@
 			                            <div class="panel-group" id="accordion21">
 			                            	<div th:each="month, iterMonth : ${year.monthList}">
 			                                <div>
-			                                    <a data-toggle="collapse" data-parent="#accordion21" th:href="${'#collapseTwoOne'+ iter.index + iterMonth.index}"><span th:text="${month.month}"></span> &raquo;
+			                                    <a data-toggle="collapse" data-parent="#accordion21" th:href="${'#collapseTwoOne'+ iter.index + iterMonth.index}"><span class="text-uppercase" th:text="${month.month}"></span> &raquo;
 			                                    </a>
 			                                    <div th:id="${'collapseTwoOne'+ iter.index + iterMonth.index}" class="panel-collapse collapse">
 			                                    	<div th:each="article : ${month.articleList}">
