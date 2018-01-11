@@ -5,8 +5,8 @@
 <head>
 </head>
 <body>
-	<div th:fragment="share-on-social">						
-		<p class="pull-right">
+	<div th:fragment="share-on-social">		
+		<p class="pull-right">			
 			<a id="shareBtn" style="cursor: pointer;"><i class="fa fa-facebook-square fa-3x" style="color:#03a9f4;"></i></a>
 				
 			<a target="popup" href="javascript: void(0)"
@@ -18,6 +18,10 @@
 				th:onClick="'javascript:ttShare(\'' + ${blogUrl} + ${#httpServletRequest.requestURI} + '\', \'' + ${#strings.capitalize(pageTitle)} + '\');'">
 					<i class="fa fa-twitter-square fa-3x"></i>
 			</a>
+		</p>
+		
+		<p class="pull-right">
+			<span style="color: #4caf50;">Share on:</span>			
 		</p>
 		
 		<script th:inline="javascript">
