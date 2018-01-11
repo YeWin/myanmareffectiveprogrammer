@@ -18,8 +18,8 @@
 
 		<!-- Access DB -->
 		<jdbcConnection driverClass="org.postgresql.Driver"
-			connectionURL="jdbc:postgresql://localhost:5432/mep" userId="postgres"
-			password="admin" />
+			connectionURL="jdbc:postgresql://localhost:5432/DBName" userId=""
+			password="" />
 
 		<!-- Generate entity class for each table targetPackage: Java package configuration 
 			targetProject: Destination folder path -->
@@ -33,14 +33,7 @@
 			targetProject=".\src\main\java\" type="ANNOTATEDMAPPER" />
 
 		<!-- Automatically generated target table -->
-		<!-- <table tableName="administrator" delimitIdentifiers="true"
-			delimitAllColumns="true" /> -->
-		<!-- <table tableName="archive" delimitIdentifiers="true"
-			delimitAllColumns="true" /> -->
-		<!-- <table tableName="category" delimitIdentifiers="true"
-			delimitAllColumns="true" /> -->
-		<table tableName="post" delimitIdentifiers="true"
-			delimitAllColumns="true" />
+		<table schema="schema_name" tableName="%" />
 	</context>
 
 </generatorConfiguration>
