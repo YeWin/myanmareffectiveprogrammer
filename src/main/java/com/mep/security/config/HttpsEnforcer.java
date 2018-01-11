@@ -3,11 +3,20 @@ package com.mep.security.config;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.mep.log.LoggingAspect;
+
 import java.io.IOException;
 
 public class HttpsEnforcer implements Filter {
 
     private FilterConfig filterConfig;
+    
+    private static final Logger logger = LoggerFactory
+			.getLogger(LoggingAspect.class);
 
     public static final String X_FORWARDED_PROTO = "x-forwarded-proto";
 
@@ -29,6 +38,8 @@ public class HttpsEnforcer implements Filter {
             }
         }
 
+        logger.debug("Server Name = " + request.getServerName());
+        logger.debug("PathInfo Name = " + request.getPathInfo());
         filterChain.doFilter(request, response);
     }
 
