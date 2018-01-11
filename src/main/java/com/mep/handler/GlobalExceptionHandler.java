@@ -18,7 +18,7 @@ class GlobalExceptionHandler {
 		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null)
 			throw e;
 
-		ModelAndView mav = new ModelAndView("/error/errors");
+		ModelAndView mav = new ModelAndView("error/errors");
 
 		return mav;
 	}
@@ -28,7 +28,7 @@ class GlobalExceptionHandler {
 			Exception e) throws Exception {
 		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null)
 			throw e;
-		ModelAndView mav = new ModelAndView("/error/errors");
+		ModelAndView mav = new ModelAndView("error/errors");
 
 		return mav;
 	}
@@ -38,7 +38,7 @@ class GlobalExceptionHandler {
 			Exception e) throws Exception {
 		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null)
 			throw e;
-		ModelAndView mav = new ModelAndView("/error/errors");
+		ModelAndView mav = new ModelAndView("error/errors");
 		return mav;
 	}
 }

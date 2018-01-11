@@ -60,6 +60,8 @@ ALTER TABLE administrator ADD COLUMN about_admin text;
 
 ALTER TABLE post ADD COLUMN content_type integer; -- 1 tutorial, 0 articles
 
+ALTER TABLE post ALTER COLUMN post_title_img_url TYPE character varying(300);
+
 INSERT INTO category(
 			category_name, created_date, updated_date)
     VALUES ('Category1', now(), now());
