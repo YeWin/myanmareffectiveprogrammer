@@ -1,5 +1,7 @@
 package com.mep.security.config;
 
+import javax.servlet.Filter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +26,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/professional-programmer", "/test-driven-development", "/effective-java", 
 				"/java7", "/about-us", "/contact-us", "/write-for-us", "/theme/**", "/webjars/**");
 	}
+	
+	@Bean
+    public Filter httpsEnforcerFilter(){
+        return new HttpsEnforcer();
+    }
 
 	@Override
 	protected void configure(HttpSecurity http)throws Exception{
