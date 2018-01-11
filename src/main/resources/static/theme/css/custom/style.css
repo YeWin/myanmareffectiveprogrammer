@@ -165,11 +165,11 @@
 }
 
 .blog-post-summary .panel{
-    min-height: 490px;
+    min-height: 495px;
 }
 
 .blog-post-summary .panelTutorial{
-    min-height: 255px;
+    min-height: 260px;
 }
 
 /* -- THEME CUSTOM -- */
@@ -192,7 +192,7 @@
 }
 
 .blog-comments-title, .blog-post-title{
-	font-size: 22px !important;
+	font-size: 20px !important;
 }
 
 @media (min-width: 1200px) {
