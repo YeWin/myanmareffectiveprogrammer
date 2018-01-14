@@ -57,8 +57,7 @@ public class ArticleSingleController extends ArticleControllerHelper {
 				.getArchiveList();
 
 		mav.addObject("archiveList", archiveList);
-		mav.addObject("pageTitle",
-				StringUtil.replaceHyphenWithWhiteSpace(postTitleEng));
+		mav.addObject("pageTitle",articleSingleDto.get(0).getPostTitle());
 
 		return mav;
 	}
