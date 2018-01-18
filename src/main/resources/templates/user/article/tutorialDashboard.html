@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="fragments/userHomeLayout" lang="en">
+<head>
+
+<title th:text="${pageTitle} + ' - Myanmar Effective Programmer'"></title>
+
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+		<div class="container blog-content">
+
+			<div class="row">
+
+				<div class="col-sm-12 blog-main">
+
+					<div th:if="${#lists.isEmpty(articleDashboardList)}">
+						<div class="row">
+							<div class="col-sm-4">
+								<h2>(On Working!)</h2>
+								<br />
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<ul class="list-group">
+							<li class="list-group-item active"><h2 th:text="${tutorialTitle}"></h2></li>
+							<li class="list-group-item"
+								th:each="article,iter : ${articleDashboardList}">								
+								<a
+								th:href="@{/{createdDate}/{postTitleEng}(createdDate=${#dates.format(article.createdDate, 'yyyy-MM-dd')}, postTitleEng=${article.postTitleEng})}">
+									<h2 class="blog-post-title">
+										<span th:utext="${iter.index + 1 + '. ' + article.postTitle}"></span>
+									</h2>
+							</a> <br />  <span class="label label-light label-success">MEP</span>&nbsp;<span
+								th:utext="${#dates.format(article.createdDate, 'MMMMM dd, yyyy')}"></span>
+								/ BY <span th:utext="${article.adminName}"
+								class="text-uppercase"></span></li>
+
+						</ul>
+					</div>
+
+				</div>
+				<!-- /.blog-main -->
+
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container -->
+
+	</div>
+
+</body>
+</html>

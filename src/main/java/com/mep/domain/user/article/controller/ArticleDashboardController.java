@@ -1,5 +1,6 @@
 package com.mep.domain.user.article.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,11 @@ import com.mep.domain.user.article.service.ArticleDashboradService;
 import com.mep.util.Constant;
 
 @Controller
-public class ArticleDashboardController extends ArticleControllerHelper {
+public class ArticleDashboardController {
 
 	private static final String ARTICLE_PATH = "user/article/articleDashboard";
+	
+	private static final String TUTORIAL_PATH = "user/article/tutorialDashboard";
 
 	private String searchValue;
 	
@@ -75,8 +78,9 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
-		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[2]));
+		mav.addObject("articleDashboardList", reverseListValue(Constant.MENU[2]));
 		
+		mav.addObject("tutorialTitle", Constant.MENU[2]);
 		mav.addObject("pageTitle", Constant.MENU[2]);
 
 		return mav;
@@ -88,8 +92,9 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 
 		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
 		
-		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[3]));
+		mav.addObject("articleDashboardList", reverseListValue(Constant.MENU[3]));
 		
+		mav.addObject("tutorialTitle", Constant.MENU[3]);
 		mav.addObject("pageTitle", Constant.MENU[3]);
 
 		return mav;
@@ -99,10 +104,11 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 	public @ResponseBody ModelAndView getJava7()
 			throws Exception {
 
-		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
+		ModelAndView mav = new ModelAndView(TUTORIAL_PATH);
 		
-		mav.addObject("articleDashboardList", getDashboardData(Constant.MENU[4]));
+		mav.addObject("articleDashboardList", reverseListValue(Constant.MENU[4]));
 		
+		mav.addObject("tutorialTitle", Constant.MENU[4]);
 		mav.addObject("pageTitle", Constant.MENU[4]);
 
 		return mav;
@@ -121,18 +127,21 @@ public class ArticleDashboardController extends ArticleControllerHelper {
 		return mav;
 	}
 	
-	private List<ArticleDashboardDto> getDashboardData(String category) {		
+	private List<ArticleDashboardDto> reverseListValue(String path) {
 		
-		/*List<ArticleDashboardDto> dashboardList = dashboradService
-				.getArticleDashboardList(category);
-
-		return getMaxonaryList(dashboardList);*/
+		List<ArticleDashboardDto> articleDashboardList = getDashboardData(path);		
+		Collections.reverse(articleDashboardList);
+		
+		return articleDashboardList;		
+	}
+	
+	private List<ArticleDashboardDto> getDashboardData(String category) {
 		
 		List<ArticleDashboardDto> articleDashboardList = dashboradService
 				.getArticleDashboardList(category);
 		
 		return articleDashboardList;
-	}
+	}	
 
 	public String getSearchValue() {
 		return searchValue;

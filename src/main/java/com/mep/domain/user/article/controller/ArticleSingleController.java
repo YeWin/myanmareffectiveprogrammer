@@ -18,7 +18,7 @@ import com.mep.domain.user.article.service.ArticleSingleService;
 import com.mep.util.StringUtil;
 
 @Controller
-public class ArticleSingleController extends ArticleControllerHelper {
+public class ArticleSingleController {
 
 	private static final String ARTICLE_PATH = "user/article/articleDetails";
 
