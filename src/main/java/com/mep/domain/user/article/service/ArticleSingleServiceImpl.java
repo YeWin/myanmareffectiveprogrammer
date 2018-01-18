@@ -1,5 +1,7 @@
 package com.mep.domain.user.article.service;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mep.domain.user.article.dao.ArticleSingleDao;
 import com.mep.domain.user.article.dto.ArticleDashboardDto;
 import com.mep.domain.user.article.dto.ArticleSingleDto;
+import com.mep.domain.user.article.dto.GoogleAnalyticsDto;
 import com.mep.domain.user.article.entity.ArticleDashboard;
 import com.mep.domain.user.article.entity.ArticleSingle;
 import com.mep.util.BeanConverter;
@@ -30,7 +33,7 @@ public class ArticleSingleServiceImpl implements ArticleSingleService {
 	public List<ArticleSingleDto> getArticle(String postTitleEng) {
 		List<ArticleSingle> articleSingleList = articleSingleDao
 				.getArticle(postTitleEng);
-
+		
 		return getDtoList(articleSingleList);
 	}
 
@@ -70,6 +73,11 @@ public class ArticleSingleServiceImpl implements ArticleSingleService {
 		}
 
 		return dashboardDtoList;
+	}
+	
+	public List<GoogleAnalyticsDto> getGoogleAnalyticsData() throws GeneralSecurityException, IOException {
+		
+		return GoogleAnalytics.getGoogleAnalyticsTopPageViews();
 	}
 
 }

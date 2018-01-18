@@ -1,5 +1,8 @@
 package com.mep.domain.user.article.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import com.mep.domain.user.archive.dto.ArchiveYearListDto;
 import com.mep.domain.user.archive.service.ArchiveListService;
 import com.mep.domain.user.article.dto.ArticleDashboardDto;
 import com.mep.domain.user.article.dto.ArticleSingleDto;
+import com.mep.domain.user.article.dto.GoogleAnalyticsDto;
 import com.mep.domain.user.article.service.ArticleSingleService;
 import com.mep.util.StringUtil;
 
@@ -27,7 +31,7 @@ public class ArticleSingleController {
 
 	@Autowired
 	private ArchiveListService archiveListService;
-	
+
 	@Value("${analytics.enable}")
 	private String analyticsStatus;
 
@@ -57,9 +61,18 @@ public class ArticleSingleController {
 				.getArchiveList();
 
 		mav.addObject("archiveList", archiveList);
-		mav.addObject("pageTitle",articleSingleDto.get(0).getPostTitle());
+		mav.addObject("pageTitle", articleSingleDto.get(0).getPostTitle());
+		mav.addObject("googleAnalyticsDto", getTopPageViews());
 
 		return mav;
+	}
+
+	public List<GoogleAnalyticsDto> getTopPageViews() {
+		try {
+			return singleService.getGoogleAnalyticsData();
+		} catch (GeneralSecurityException | IOException e) {
+			return Collections.emptyList();
+		}		
 	}
 
 	@ModelAttribute("blogUrl")
@@ -70,7 +83,7 @@ public class ArticleSingleController {
 	public void setBlogUrl(String blogUrl) {
 		this.blogUrl = blogUrl;
 	}
-	
+
 	@ModelAttribute("analyticsStatus")
 	public String getAnalyticsStatus() {
 		return analyticsStatus;

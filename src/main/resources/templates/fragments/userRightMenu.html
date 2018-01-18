@@ -48,6 +48,23 @@
 	          </div><!-- /.sidebar-module -->
 	          
 	          <div class="sidebar-module">
+	          	<div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">POPULAR POST</h3>
+                  </div>
+                  <div class="panel-body">
+                    
+                      <p th:if="${#lists.isEmpty(googleAnalyticsDto)}"> No data currently!</p>
+                      
+                      <p th:each="data : ${googleAnalyticsDto}">
+                      	 <span th:utext="${data.postTitle}"></span>
+                      </p>
+                    
+                  </div>
+                </div>
+	          </div>
+	          
+	          <div class="sidebar-module">
 	            <div class="form-group">
 	            	<h2 style="font-weight: 400;">BLOG ARCHIVE</h2>
 	              <div th:each="year,iter : ${archiveList}">
@@ -57,28 +74,26 @@
 			                        <a class="panel-title" data-toggle="collapse" data-parent="#accordion1" th:href="${'#collapseTwo' + iter.index}">♦ <span th:text="${year.year}"></span>
 			                        </a>
 			                </div>
-			                <div th:id="${'collapseTwo' + iter.index}" class="panel-collapse collapse">
-			                    <div class="panel-body">
-			                        <div class="panel-body">			                            
-			                            <div class="panel-group" id="accordion21">
-			                            	<div th:each="month, iterMonth : ${year.monthList}">
-			                                <div>
-			                                    <a data-toggle="collapse" data-parent="#accordion21" th:href="${'#collapseTwoOne'+ iter.index + iterMonth.index}"><span class="text-uppercase" th:text="${month.month}"></span> &raquo;
-			                                    </a>
-			                                    <div th:id="${'collapseTwoOne'+ iter.index + iterMonth.index}" class="panel-collapse collapse">
-			                                    	<div th:each="article : ${month.articleList}">
-			                                        	<div class="panel-body">
-			                                        		<a th:href="@{/{createdDate}/{postTitleEng}(createdDate=${#dates.format(article.createdDate, 'yyyy-MM-dd')}, postTitleEng=${article.postTitleEng})}">
-			                                        			<span th:text="${article.postTitle}"></span>
-			                                        		</a>
-			                                        	</div>
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
+			                <div th:id="${'collapseTwo' + iter.index}" class="panel-collapse collapse">			                    
+		                        <div class="panel-body">			                            
+		                            <div class="panel-group" id="accordion21">
+		                            	<div th:each="month, iterMonth : ${year.monthList}">
+		                                <div>
+		                                    <a data-toggle="collapse" data-parent="#accordion21" th:href="${'#collapseTwoOne'+ iter.index + iterMonth.index}"><span class="text-uppercase" th:text="${month.month}"></span> &raquo;
+		                                    </a>
+		                                    <div th:id="${'collapseTwoOne'+ iter.index + iterMonth.index}" class="panel-collapse collapse">
+		                                    	<div th:each="article : ${month.articleList}">
+		                                        	<div class="panel-body">
+		                                        		<a th:href="@{/{createdDate}/{postTitleEng}(createdDate=${#dates.format(article.createdDate, 'yyyy-MM-dd')}, postTitleEng=${article.postTitleEng})}">
+		                                        			<span th:text="${article.postTitle}"></span>
+		                                        		</a>
+		                                        	</div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                </div>
+		                            </div>
+		                        </div>			                    
 			                </div>
 			            </div>			
 			        </div>
