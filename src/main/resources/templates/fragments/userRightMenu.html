@@ -57,7 +57,10 @@
                       <p th:if="${#lists.isEmpty(googleAnalyticsDto)}"> No data currently!</p>
                       
                       <p th:each="data : ${googleAnalyticsDto}">
+                      <a th:href="@{/{createdDate}/{postTitleEng}(createdDate=${data.createdDate}, postTitleEng=${data.pageUniquePath})}">
                       	 <span th:utext="${data.postTitle}"></span>
+                      	 <br /><br />
+					  </a>
                       </p>
                     
                   </div>

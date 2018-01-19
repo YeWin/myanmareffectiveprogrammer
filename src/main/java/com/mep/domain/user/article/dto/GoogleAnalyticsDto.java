@@ -5,9 +5,19 @@ import java.io.Serializable;
 public class GoogleAnalyticsDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private String pageUniquePath;
+	
 	private String postTitle;
 	
-	private Integer postView;
+	private String createdDate;
+
+	public String getPageUniquePath() {
+		return pageUniquePath;
+	}
+
+	public void setPageUniquePath(String pageUniquePath) {
+		this.pageUniquePath = pageUniquePath;
+	}
 
 	public String getPostTitle() {
 		return postTitle;
@@ -17,11 +27,11 @@ public class GoogleAnalyticsDto implements Serializable {
 		this.postTitle = postTitle;
 	}
 
-	public Integer getPostView() {
-		return postView;
+	public String getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setPostView(Integer postView) {
-		this.postView = postView;
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
 }

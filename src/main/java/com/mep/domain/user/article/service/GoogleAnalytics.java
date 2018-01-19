@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
@@ -23,12 +22,12 @@ import com.mep.domain.user.article.dto.GoogleAnalyticsDto;
 import com.mep.util.DateUtil;
 
 /**
- * A simple example of how to access the Google Analytics API using a service
+ * To access the Google Analytics API using Google Analytics Core API
  * account.
  */
 public class GoogleAnalytics {
 
-	private static final String APPLICATION_NAME = "Hello Analytics";
+	private static final String APPLICATION_NAME = "MEP";
 	private static final JsonFactory JSON_FACTORY = GsonFactory
 			.getDefaultInstance();
 	private static final String KEY_FILE_LOCATION = "My Project-d33d112cb58b.json";
@@ -39,7 +38,6 @@ public class GoogleAnalytics {
 		Analytics analytics = initializeAnalytics();
 
 		return getCoreData(analytics);
-
 	}
 
 	/**
@@ -69,47 +67,58 @@ public class GoogleAnalytics {
 		String currentDate = DateUtil.changeDateFormat(
 				DateUtil.getCurrentTime(), "YYY-MM-DD");
 
-		Get apiQuery = analytics.data().ga().get("ga:167291616", // Table Id.
-				"2018-01-12", // Start date.
-				currentDate, // End date.
-				"ga:pageviews")
-				// Metrics.
-				.setDimensions("ga:pagePathLevel2,ga:pageTitle").setSort("-ga:pageviews")
-				.setMaxResults(25);
+		Get apiQuery = analytics
+				.data()
+				.ga()
+				.get("ga:167291616", // Google analytics profile ID
+						"2018-01-12", 
+						currentDate, 
+						"ga:pageviews")	// Metrics.
+				.setDimensions(
+						"ga:pagePathLevel1, ga:pagePathLevel2,ga:pageTitle")
+				.setSort("-ga:pageviews").setMaxResults(7);
 
 		GaData gaData = apiQuery.execute();
 
 		return getDataTable(gaData);
-	}	
+	}
 
 	private static List<GoogleAnalyticsDto> getDataTable(GaData gaData) {
 		if (gaData.getTotalResults() > 0) {
-
 			List<GoogleAnalyticsDto> googleAnalyticsDto = new ArrayList<>();
 
-			GoogleAnalyticsDto dto;
+			setAnalyticsDataTableToDtoRelatedFields(gaData, googleAnalyticsDto);
 
-			for (List<String> rowValues : gaData.getRows()) {
-				dto = new GoogleAnalyticsDto();
-				for (String value : rowValues) {
-					if(dto.getPostTitle() != null) {
-						if(!isNumeric(value))
-						dto.setPostTitle(dto.getPostTitle() + value);
-					} else {
-						dto.setPostTitle(value);	
-					}									
-				}
-				googleAnalyticsDto.add(dto);
-			}
 			return googleAnalyticsDto;
-		} else {
-			System.out.println("No Results Found");
 		}
 
 		return Collections.emptyList();
 	}
-	
-	private static boolean isNumeric(String s) {  
-	    return s != null && s.matches("[-+]?\\d*\\.?\\d+");  
-	} 
+
+	private static void setAnalyticsDataTableToDtoRelatedFields(GaData gaData,
+			List<GoogleAnalyticsDto> googleAnalyticsDto) {
+		GoogleAnalyticsDto dto;
+		for (List<String> rowValues : gaData.getRows()) {
+			dto = new GoogleAnalyticsDto();
+			for (String value : rowValues) {
+				if (dto.getCreatedDate() != null) {
+					if (!isNumeric(value)) {
+						if (value.contains("- Myanmar Effective Programmer")) {
+							dto.setPostTitle(value.replace(
+									"- Myanmar Effective Programmer", ""));
+						} else {
+							dto.setPageUniquePath(value.replace("/", ""));
+						}
+					}
+				} else {
+					dto.setCreatedDate(value.replace("/", ""));
+				}
+			}
+			googleAnalyticsDto.add(dto);
+		}
+	}
+
+	private static boolean isNumeric(String s) {
+		return s != null && s.matches("[-+]?\\d*\\.?\\d+");
+	}
 }
