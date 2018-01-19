@@ -24,7 +24,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception{		
 		web.ignoring().antMatchers("/", "/searchArticle",  "/2**/**", "/articles",
 				"/professional-programmer", "/test-driven-development", "/effective-java", 
-				"/java7", "/about-us", "/contact-us", "/write-for-us", "/theme/**", "/webjars/**");
+				"/java7", "/about-us", "/contact-us", "/write-for-us", "/theme/**", "/webjars/**", "/sitemap.xml");
 	}
 	
 	@Bean

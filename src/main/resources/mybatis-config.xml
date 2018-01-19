@@ -12,5 +12,6 @@
         <mapper resource="mybatis/mapper/ArticleDashboardMapper.xml"/>
         <mapper resource="mybatis/mapper/ArticleSingleMapper.xml"/>
         <mapper resource="mybatis/mapper/ArchiveListMapper.xml"/>
+        <mapper resource="mybatis/mapper/SiteMapMapper.xml"/>
     </mappers>
 </configuration>
