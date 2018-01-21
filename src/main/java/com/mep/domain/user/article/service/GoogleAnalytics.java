@@ -31,7 +31,7 @@ public class GoogleAnalytics {
 	private static final String APPLICATION_NAME = "Myanmar Effective Programmer";
 	private static final JsonFactory JSON_FACTORY = GsonFactory
 			.getDefaultInstance();
-	private static final String KEY_FILE_LOCATION = "MEP1.json";
+	private static final String KEY_FILE_LOCATION = "MEP.json";
 
 	public static List<GoogleAnalyticsDto> getGoogleAnalyticsTopPageViews()
 			throws GeneralSecurityException, IOException {
