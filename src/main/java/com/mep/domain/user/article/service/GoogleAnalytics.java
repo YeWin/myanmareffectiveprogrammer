@@ -35,6 +35,7 @@ public class GoogleAnalytics {
 	public static List<GoogleAnalyticsDto> getGoogleAnalyticsTopPageViews()
 			throws GeneralSecurityException, IOException {
 
+		System.out.println("Status 1");
 		Analytics analytics = initializeAnalytics();
 
 		return getCoreData(analytics);
@@ -56,6 +57,7 @@ public class GoogleAnalytics {
 				new FileInputStream(new ClassPathResource(KEY_FILE_LOCATION)
 						.getFile())).createScoped(AnalyticsScopes.all());
 
+		System.out.println("Status 2");
 		// Construct the Analytics service object.
 		return new Analytics.Builder(httpTransport, JSON_FACTORY, credential)
 				.setApplicationName(APPLICATION_NAME).build();
@@ -64,6 +66,7 @@ public class GoogleAnalytics {
 	private static List<GoogleAnalyticsDto> getCoreData(Analytics analytics)
 			throws IOException {
 
+		System.out.println("Status 3");
 		String currentDate = DateUtil.changeDateFormat(
 				DateUtil.getCurrentTime(), "YYY-MM-DD");
 
@@ -79,12 +82,16 @@ public class GoogleAnalytics {
 				.setSort("-ga:pageviews").setMaxResults(7);
 
 		GaData gaData = apiQuery.execute();
+		
+		System.out.println("Status 4");
 
 		return getDataTable(gaData);
 	}
 
 	private static List<GoogleAnalyticsDto> getDataTable(GaData gaData) {
+		System.out.println("Status 5");
 		if (gaData.getTotalResults() > 0) {
+			System.out.println("Status 6");
 			List<GoogleAnalyticsDto> googleAnalyticsDto = new ArrayList<>();
 
 			setAnalyticsDataTableToDtoRelatedFields(gaData, googleAnalyticsDto);
