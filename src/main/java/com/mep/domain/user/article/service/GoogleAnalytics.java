@@ -106,7 +106,8 @@ public class GoogleAnalytics {
 							dto.setPostTitle(value.replace(
 									"- Myanmar Effective Programmer", ""));
 						} else {
-							dto.setPageUniquePath(value.replace("/", ""));
+							String uniquePath = value.replace("/", "");
+							dto.setPageUniquePath(uniquePath.replace("=", ""));
 						}
 					}
 				} else {
