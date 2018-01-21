@@ -51,12 +51,15 @@ public class GoogleAnalytics {
 	private static Analytics initializeAnalytics()
 			throws GeneralSecurityException, IOException {
 
+		System.out.println("Status 12");
 		HttpTransport httpTransport = GoogleNetHttpTransport
 				.newTrustedTransport();
+		System.out.println("Status 13");
 		GoogleCredential credential = GoogleCredential.fromStream(
 				new FileInputStream(new ClassPathResource(KEY_FILE_LOCATION)
 						.getFile())).createScoped(AnalyticsScopes.all());
 
+		System.out.println("Status 14");
 		System.out.println("Status 2");
 		// Construct the Analytics service object.
 		return new Analytics.Builder(httpTransport, JSON_FACTORY, credential)
