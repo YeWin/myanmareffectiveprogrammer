@@ -63,7 +63,9 @@ public class ArticleSingleController {
 		mav.addObject("archiveList", archiveList);
 		if (!articleSingleDto.isEmpty()) {
 			mav.addObject("pageTitle", articleSingleDto.get(0).getPostTitle());
-		}		
+		} else {
+			mav.addObject("pageTitle", "No Data!");
+		}
 		mav.addObject("googleAnalyticsDto", getTopPageViews());
 
 		return mav;
