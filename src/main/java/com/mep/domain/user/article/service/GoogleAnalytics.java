@@ -22,7 +22,7 @@ import com.mep.domain.user.article.dto.GoogleAnalyticsDto;
 import com.mep.util.DateUtil;
 
 /**
- * To access the Google Analytics API using Google Analytics Core API
+ * To access the Google Analytics using Google Analytics Core API
  * account.
  */
 public class GoogleAnalytics {
