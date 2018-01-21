@@ -27,15 +27,15 @@ import com.mep.util.DateUtil;
  */
 public class GoogleAnalytics {
 
-	private static final String APPLICATION_NAME = "MEP";
+	private static final String APPLICATION_NAME = "Myanmar Effective Programmer";
 	private static final JsonFactory JSON_FACTORY = GsonFactory
 			.getDefaultInstance();
-	private static final String KEY_FILE_LOCATION = "My Project-d33d112cb58b.json";
+	private static final String KEY_FILE_LOCATION = "MEP.json";
 
 	public static List<GoogleAnalyticsDto> getGoogleAnalyticsTopPageViews()
 			throws GeneralSecurityException, IOException {
 
-		System.out.println("Status 1");
+		System.out.println("Status 11");
 		Analytics analytics = initializeAnalytics();
 
 		return getCoreData(analytics);

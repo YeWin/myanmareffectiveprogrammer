@@ -73,6 +73,7 @@ public class ArticleSingleController {
 
 	public List<GoogleAnalyticsDto> getTopPageViews() {
 		try {
+			System.out.print("List Size 0= ");
 			List<GoogleAnalyticsDto> analyticsList =  singleService.getGoogleAnalyticsData();
 			System.out.print("List Size = " + analyticsList.size());
 			return analyticsList;
