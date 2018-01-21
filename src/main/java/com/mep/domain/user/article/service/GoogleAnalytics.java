@@ -1,6 +1,7 @@
 package com.mep.domain.user.article.service;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class GoogleAnalytics {
 	private static final String APPLICATION_NAME = "Myanmar Effective Programmer";
 	private static final JsonFactory JSON_FACTORY = GsonFactory
 			.getDefaultInstance();
-	private static final String KEY_FILE_LOCATION = "MEP.json";
+	private static final String KEY_FILE_LOCATION = "MEP1.json";
 
 	public static List<GoogleAnalyticsDto> getGoogleAnalyticsTopPageViews()
 			throws GeneralSecurityException, IOException {
@@ -49,7 +50,7 @@ public class GoogleAnalytics {
 	 * @throws GeneralSecurityException
 	 */
 	private static Analytics initializeAnalytics()
-			throws GeneralSecurityException, IOException {
+			throws GeneralSecurityException, FileNotFoundException, IOException {
 
 		System.out.println("Status 12");
 		HttpTransport httpTransport = GoogleNetHttpTransport
