@@ -1,6 +1,5 @@
 package com.mep.domain.user.article.service;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -23,8 +22,7 @@ import com.mep.domain.user.article.dto.GoogleAnalyticsDto;
 import com.mep.util.DateUtil;
 
 /**
- * To access the Google Analytics using Google Analytics Core API
- * account.
+ * To access the Google Analytics using Google Analytics Core API account.
  */
 public class GoogleAnalytics {
 
@@ -36,7 +34,6 @@ public class GoogleAnalytics {
 	public static List<GoogleAnalyticsDto> getGoogleAnalyticsTopPageViews()
 			throws GeneralSecurityException, IOException {
 
-		System.out.println("Status 11");
 		Analytics analytics = initializeAnalytics();
 
 		return getCoreData(analytics);
@@ -51,17 +48,13 @@ public class GoogleAnalytics {
 	 */
 	private static Analytics initializeAnalytics()
 			throws GeneralSecurityException, FileNotFoundException, IOException {
-
-		System.out.println("Status 12");
+		
 		HttpTransport httpTransport = GoogleNetHttpTransport
 				.newTrustedTransport();
-		System.out.println("Status 13");
 		GoogleCredential credential = GoogleCredential.fromStream(
-				new FileInputStream(new ClassPathResource(KEY_FILE_LOCATION)
-						.getFile())).createScoped(AnalyticsScopes.all());
+				new ClassPathResource(KEY_FILE_LOCATION).getInputStream())
+				.createScoped(AnalyticsScopes.all());
 
-		System.out.println("Status 14");
-		System.out.println("Status 2");
 		// Construct the Analytics service object.
 		return new Analytics.Builder(httpTransport, JSON_FACTORY, credential)
 				.setApplicationName(APPLICATION_NAME).build();
@@ -69,8 +62,7 @@ public class GoogleAnalytics {
 
 	private static List<GoogleAnalyticsDto> getCoreData(Analytics analytics)
 			throws IOException {
-
-		System.out.println("Status 3");
+		
 		String currentDate = DateUtil.changeDateFormat(
 				DateUtil.getCurrentTime(), "YYY-MM-DD");
 
@@ -78,24 +70,20 @@ public class GoogleAnalytics {
 				.data()
 				.ga()
 				.get("ga:167291616", // Google analytics profile ID
-						"2018-01-12", 
-						currentDate, 
-						"ga:pageviews")	// Metrics.
+						"2018-01-12", currentDate, "ga:pageviews")
+				// Metrics.
 				.setDimensions(
 						"ga:pagePathLevel1, ga:pagePathLevel2,ga:pageTitle")
 				.setSort("-ga:pageviews").setMaxResults(7);
 
 		GaData gaData = apiQuery.execute();
-		
-		System.out.println("Status 4");
 
 		return getDataTable(gaData);
 	}
 
 	private static List<GoogleAnalyticsDto> getDataTable(GaData gaData) {
-		System.out.println("Status 5");
+
 		if (gaData.getTotalResults() > 0) {
-			System.out.println("Status 6");
 			List<GoogleAnalyticsDto> googleAnalyticsDto = new ArrayList<>();
 
 			setAnalyticsDataTableToDtoRelatedFields(gaData, googleAnalyticsDto);

@@ -1,6 +1,5 @@
 package com.mep.domain.user.article.controller;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
@@ -73,14 +72,9 @@ public class ArticleSingleController {
 	}
 
 	public List<GoogleAnalyticsDto> getTopPageViews() {
-		try {
-			System.out.print("List Size 0= ");
-			List<GoogleAnalyticsDto> analyticsList =  singleService.getGoogleAnalyticsData();
-			System.out.print("List Size = " + analyticsList.size());
-			return analyticsList;
-		} catch (GeneralSecurityException | IOException e) {
-			System.out.print("List Size 1= ");
-			e.printStackTrace();
+		try {			
+			return singleService.getGoogleAnalyticsData();			
+		} catch (GeneralSecurityException | IOException e) {			
 			return Collections.emptyList();
 		}		
 	}
