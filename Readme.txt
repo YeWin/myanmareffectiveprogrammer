@@ -41,3 +41,5 @@ http://www.thymeleaf.org/doc/articles/standardurlsyntax.html
 
 
 web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
+
+#Build Test
