@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
@@ -64,7 +65,7 @@ public class GoogleAnalytics {
 			throws IOException {
 		
 		String currentDate = DateUtil.changeDateFormat(
-				DateUtil.getCurrentTime(), "YYY-MM-DD");
+				new Date(), "yyyy-MM-dd");
 
 		Get apiQuery = analytics
 				.data()
