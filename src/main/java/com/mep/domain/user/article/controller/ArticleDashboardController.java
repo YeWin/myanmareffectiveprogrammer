@@ -76,7 +76,7 @@ public class ArticleDashboardController {
 	public @ResponseBody ModelAndView getTestDrivenDevelopment()
 			throws Exception {
 
-		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
+		ModelAndView mav = new ModelAndView(TUTORIAL_PATH);
 		
 		mav.addObject("articleDashboardList", reverseListValue(Constant.MENU[2]));
 		
@@ -90,7 +90,7 @@ public class ArticleDashboardController {
 	public @ResponseBody ModelAndView getEffectiveJava()
 			throws Exception {
 
-		ModelAndView mav = new ModelAndView(ARTICLE_PATH);
+		ModelAndView mav = new ModelAndView(TUTORIAL_PATH);
 		
 		mav.addObject("articleDashboardList", reverseListValue(Constant.MENU[3]));
 		
