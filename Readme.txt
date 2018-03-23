@@ -43,3 +43,6 @@ http://www.thymeleaf.org/doc/articles/standardurlsyntax.html
 web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
 
 #Build Test
+
+
+https://stackoverflow.com/questions/49424731/springboot-test-with-different-properties-per-location
