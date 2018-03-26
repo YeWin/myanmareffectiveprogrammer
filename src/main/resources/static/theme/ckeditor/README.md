@@ -37,3 +37,6 @@ To test your installation, just call the following page at your website:
 For example:
 
 	http://www.example.com/ckeditor/samples/index.html
+
+For YouTube Plugins:
+https://ckeditor.com/cke4/addon/youtube
