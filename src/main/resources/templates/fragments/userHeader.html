@@ -14,6 +14,14 @@
 			      <span class="icon-bar"></span>
 			    </button>
 			    <a class="navbar-brand" th:href="@{/}"><i class="material-icons">&#xE871;</i> MEP</a>
+			    <div class="form-group" style="width:56%; float:right; margin-top:8px;">
+						<div class="search">
+							<form th:action="@{/searchArticle}" method="get">
+								<input name="searchValue" type="text" th:value="*{searchValue}"	placeholder="Search" style="color:#000; width:86%; padding-left:10px;" /> 
+								<input type="submit" class="btn" style="width:20px !important; padding:5px; margin:5px 1px;" />
+							</form>
+						</div>
+					</div>
 			  </div>
 			  <div class="navbar-collapse collapse navbar-responsive-collapse">
 			    <ul class="nav navbar-nav">          
@@ -67,7 +75,7 @@
 			    </button>
 			    <a class="navbar-brand" th:href="@{/}"><i class="material-icons">&#xE871;</i> MEP</a>
 			  </div>
-			  <div class="navbar-collapse collapse navbar-responsive-collapse">
+			  <div class="navbar-collapse collapse navbar-responsive-collapse" style="width:68%; float:left;">
 			    <ul class="nav navbar-nav">          
 			    	<li class="active"><a th:href="@{/articles}">Articles</a></li>
 			      <li class="active"><a th:href="@{/professional-programmer}">Professional Programmer</a></li>
@@ -92,6 +100,16 @@
 			      <li><a target="_blank" href="https://twitter.com/yewin_mep"><i class="fa fa-twitter"></i></a></li>
 			    </ul>
 			  </div>
+			  <div style="width:22%; float:right; padding-top:10px;">
+				    <div class="form-group">
+						<div class="search">
+							<form th:action="@{/searchArticle}" method="get">
+								<input name="searchValue" type="text" th:value="*{searchValue}"	placeholder="Search" style="color:#000; width:86%; padding-left:10px;" /> 
+								<input type="submit" class="btn" style="width:20px !important; padding:10px;" />
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 	    </div>	
 	</div>
