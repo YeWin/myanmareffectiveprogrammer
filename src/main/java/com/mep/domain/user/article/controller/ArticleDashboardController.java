@@ -100,6 +100,20 @@ public class ArticleDashboardController {
 		return mav;
 	}
 	
+	@GetMapping(value = { "/solid-programming-principles" })
+	public @ResponseBody ModelAndView getSolid()
+			throws Exception {
+
+		ModelAndView mav = new ModelAndView(TUTORIAL_PATH);
+		
+		mav.addObject("articleDashboardList", reverseListValue(Constant.MENU[6]));
+		
+		mav.addObject("tutorialTitle", Constant.MENU[6]);
+		mav.addObject("pageTitle", Constant.MENU[6]);
+
+		return mav;
+	}
+	
 	@GetMapping(value = { "/java7" })
 	public @ResponseBody ModelAndView getJava7()
 			throws Exception {
