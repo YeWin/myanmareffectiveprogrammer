@@ -21,66 +21,61 @@ import com.mep.security.service.AdminDetailsServiceImpl;
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	public void configure(WebSecurity web) throws Exception{		
-		web.ignoring().antMatchers("/", "/searchArticle",  "/2**/**", "/articles",
-				"/professional-programmer", "/test-driven-development", "/effective-java", 
-				"/java7", "/about-us", "/contact-us", "/write-for-us", "/theme/**", "/webjars/**", "/sitemap.xml");
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/", "/searchArticle", "/2**/**",
+				"/articles", "/professional-programmer",
+				"/test-driven-development", "/effective-java",
+				"/solid-programming-principles", "/java7", "/about-us",
+				"/contact-us", "/write-for-us", "/theme/**", "/webjars/**",
+				"/sitemap.xml");
 	}
-	
+
 	@Bean
-    public Filter httpsEnforcerFilter(){
-        return new HttpsEnforcer();
-    }
+	public Filter httpsEnforcerFilter() {
+		return new HttpsEnforcer();
+	}
 
 	@Override
-	protected void configure(HttpSecurity http)throws Exception{
+	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-			.antMatchers("/login",
-						"/login-error",
-						"admin/**",
-						"/auth").permitAll()
-			.anyRequest().authenticated()
-		.and()
-        
-		//this config is require as website have to use embedded script.
-        .headers().defaultsDisabled()
-        .xssProtection().xssProtectionEnabled(false)
-        .and()
-        .and();
+				.antMatchers("/login", "/login-error", "admin/**", "/auth")
+				.permitAll().anyRequest().authenticated().and()
 
-		http.formLogin()
-			.loginProcessingUrl("/auth")		
-			.loginPage("/login")
-			.failureForwardUrl("/login-error")
-			.defaultSuccessUrl("/login-success", true)
-			.usernameParameter("adminEmail")
-			.passwordParameter("adminPassword")
-			.and();
+				// this config is require as website have to use embedded
+				// script.
+				.headers().defaultsDisabled().xssProtection()
+				.xssProtectionEnabled(false).and().and();
+
+		http.formLogin().loginProcessingUrl("/auth").loginPage("/login")
+				.failureForwardUrl("/login-error")
+				.defaultSuccessUrl("/login-success", true)
+				.usernameParameter("adminEmail")
+				.passwordParameter("adminPassword").and();
 
 		http.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))
-			.logoutSuccessUrl("/login")
-			.invalidateHttpSession(true);
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))
+				.logoutSuccessUrl("/login").invalidateHttpSession(true);
 	}
 
 	@Configuration
-    protected static class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter {
+	protected static class AuthenticationConfiguration extends
+			GlobalAuthenticationConfigurerAdapter {
 
-        @Autowired
-        AdminDetailsServiceImpl adminDetailsServiceImpl;
+		@Autowired
+		AdminDetailsServiceImpl adminDetailsServiceImpl;
 
-        @Bean
-        public PasswordEncoder passwordEncoder() {
-            return new BCryptPasswordEncoder();
-        }
+		@Bean
+		public PasswordEncoder passwordEncoder() {
+			return new BCryptPasswordEncoder();
+		}
 
-        @Override
-        public void init(AuthenticationManagerBuilder auth) throws Exception {
-            
-            auth.userDetailsService(adminDetailsServiceImpl)
-            
-            .passwordEncoder(passwordEncoder());
-        }
-    }
+		@Override
+		public void init(AuthenticationManagerBuilder auth) throws Exception {
+
+			auth.userDetailsService(adminDetailsServiceImpl)
+
+			.passwordEncoder(passwordEncoder());
+		}
+	}
 }
